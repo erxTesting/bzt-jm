@@ -1,7 +1,8 @@
 # BlazeMeter Taurus and JMeter container
 # See https://hub.docker.com/r/erxx/bzt-jm
 # Taurus / JMeter only layered container	bzt-erx:v0.4.1 
-# See https://github.com/erxTesting/erx-bzt-container
+# https://github.com/erxTesting/erx-bzt-container
+# https://cloud.docker.com/u/erxx/repository/docker/erxx/bzt-jm
 
 # Use phusion/baseimage as base image. To make your builds reproducible, make
 # sure you lock down to a specific version, not to `latest`!
