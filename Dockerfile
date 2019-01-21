@@ -1,4 +1,4 @@
-git branch -a# BlazeMeter Taurus and JMeter container
+# BlazeMeter Taurus and JMeter container
 # See https://hub.docker.com/r/erxx/bzt-jm
 # Taurus / JMeter only layered container	bzt-erx:v0.4.1 
 # See https://github.com/erxTesting/erx-bzt-container
