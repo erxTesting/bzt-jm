@@ -1,7 +1,8 @@
 # BlazeMeter Taurus and JMeter container
 # See https://hub.docker.com/r/erxx/bzt-jm
 # Taurus / JMeter only layered container	bzt-erx:v0.4.1 
-# See https://github.com/erxTesting/erx-bzt-container
+# https://github.com/erxTesting/erx-bzt-container
+# https://cloud.docker.com/u/erxx/repository/docker/erxx/bzt-jm
 
 # Use phusion/baseimage as base image. To make your builds reproducible, make
 # sure you lock down to a specific version, not to `latest`!
@@ -41,8 +42,7 @@ ENV JAVA_VERSION=11 \
 RUN apt-get update \
     && apt-get -y install openjdk-11-jdk \
     && apt-get clean \
-    #&& bzt genes/jmeter_executor.yaml -o execution.0.concurrency=1 -o execution.0.iterations=1 http://blazedemo.com/ \
-    && bzt -o execution.0.concurrency=1 -o execution.0.iterations=1 http://blazedemo.com/ \
+    && bzt -o modules.jmeter.plugins=jmeter.backendlistener.elasticsearch -o execution.0.concurrency=1 -o execution.0.iterations=1 http://blazedemo.com/ \
     && ls -la /tmp && cat /tmp/jpgc-*.log && ls -la ~/.bzt/jmeter-taurus/*/lib/ext \
 	&& ls -la ~/.bzt/jmeter-taurus/*/lib/ext/jmeter-plugins-tst-*.jar 
 
