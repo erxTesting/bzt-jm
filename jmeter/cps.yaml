@@ -1,0 +1,37 @@
+modules:
+  jmeter:
+    properties:
+      # httpclient.socket.http.cps:   21888       #   Mobile data GPRS : 171 kbit/s   
+      # httpclient.socket.https.cps:  21888
+      # httpclient.socket.http.cps:   49152       #   Mobile data EDGE : 384 kbit/s   
+      # httpclient.socket.https.cps:  49152
+      # httpclient.socket.http.cps:   1843200     #   Mobile data HSPA : 14,4 Mbp/s   
+      # httpclient.socket.https.cps:  1843200
+      # httpclient.socket.http.cps:   2688000     #   Mobile data HSPA+ 3G: 21 Mbp/s  
+      # httpclient.socket.https.cps:  2688000
+      # httpclient.socket.http.cps:   5376000     #   Mobile data DC-HSPA+ : 42 Mbps  
+      # httpclient.socket.https.cps:  5376000
+      # httpclient.socket.http.cps:   19200000    #   Mobile data LTE 4G: 150 Mbp/s       
+      # httpclient.socket.https.cps:  19200000
+      # httpclient.socket.http.cps:   6912000     #   WIFI 802.11a/g : 54 Mbit/s  
+      # httpclient.socket.https.cps:  6912000
+      # httpclient.socket.http.cps:   76800000    #   WIFI 802.11n : 600 Mbit/s       
+      # httpclient.socket.https.cps:  76800000
+      # httpclient.socket.http.cps:   1280000     #   Ethernet LAN ; 10 Mbit/s    
+      # httpclient.socket.https.cps:  1280000
+      # httpclient.socket.http.cps:   12800000    #   Fast Ethernet : 100 Mbit/s      
+      # httpclient.socket.https.cps:  12800000
+      # httpclient.socket.http.cps:   128000000   #   Gigabit Ethernet : 1 Gbit/s     
+      # httpclient.socket.https.cps:  128000000
+      # httpclient.socket.http.cps:   1280000000  #   10 Gigabit Ethernet : 10 Gbit/s     
+      # httpclient.socket.https.cps:  1280000000
+      # httpclient.socket.http.cps:   12800000000 #   100 Gigabit Ethernet : 100 Gbit/s       
+      # httpclient.socket.https.cps:  12800000000
+      # httpclient.socket.http.cps:   7168        #   WAN modems V.92 modems : 56 kbit/s  
+      # httpclient.socket.https.cps:  7168
+      # httpclient.socket.http.cps:   1024000     #   ADSL : 8 Mbit/s 
+      # httpclient.socket.https.cps:  1024000
+      # httpclient.socket.http.cps:   1536000     #   ADSL2 : 12 Mbit/s   
+      # httpclient.socket.https.cps:  1536000
+      # httpclient.socket.http.cps:   3072000     #   ADSL2+ : 24 Mbit/s  
+      # httpclient.socket.https.cps:  3072000
