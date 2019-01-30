@@ -1,0 +1,1266 @@
+Sending build context to Docker daemon   5.12kB
+Step 1/8 : FROM phusion/baseimage:0.11
+ ---> 14e6c478b00a
+Step 2/8 : LABEL maintainer="Eric Berg ERX <perfology@gmail.com>"
+ ---> Using cache
+ ---> f5954a86a6b2
+Step 3/8 : CMD ["/sbin/my_init"]
+ ---> Using cache
+ ---> 3c05226e9cb6
+Step 4/8 : RUN apt-get update     && apt-get install -y wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev 	    libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils 	&& pip install --upgrade pip     && rm -rf /var/lib/apt/lists/*     && apt-get clean
+ ---> Using cache
+ ---> 2cbce608adb8
+Step 5/8 : RUN pip install --upgrade bzt     && echo $'settings:\n  artifacts-dir: /var/log/jmeter/%Y-%m-%d_%H-%M-%S.%f' > ~/.bzt-rc 	&& cat ~/.bzt-rc     && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ ---> Running in 9b7e06ef68ff
+Collecting bzt
+  Downloading https://files.pythonhosted.org/packages/ae/13/a45775634bd8a0d76e4f23262e53da58cfb75d2c1461518c2fe939907804/bzt-1.13.0-py2.py3-none-any.whl (960kB)
+Collecting psutil!=5.3.0,>=5 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/7d/9a/1e93d41708f8ed2b564395edfa3389f0fd6d567597401c2e5e2775118d8b/psutil-5.4.7.tar.gz (420kB)
+Requirement already satisfied, skipping upgrade: ipaddress in /usr/lib/python2.7/dist-packages (from bzt) (1.0.17)
+Collecting gevent!=1.3.5 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/40/4f/222cefc08c1ffda69454908496e46c32f7b82da30ade4861178c6a72405e/gevent-1.3.7-cp27-cp27mu-manylinux1_x86_64.whl (4.2MB)
+Collecting terminaltables>=3.1.0 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/9b/c4/4a21174f32f8a7e1104798c445dacdc1d4df86f2f26722767034e4de4bff/terminaltables-3.1.0.tar.gz
+Collecting hdrpy>=0.3.3 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/93/31/6d667e0010698d5dcbe7a98c3545c14363db963f86d776237cf16b6323d7/hdrpy-0.3.3-py2.py3-none-any.whl
+Collecting pytest>=3 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/80/2a/2995cbec008f624e1dd8ddc5350535a5d2f33c10b82c06037298e6c52bee/pytest-3.9.2-py2.py3-none-any.whl (214kB)
+Collecting colorlog (from bzt)
+  Downloading https://files.pythonhosted.org/packages/69/eb/58ae10d3c46a0195ffdd0e3943d255d0d5029d71e5457785ecd665bcf0f3/colorlog-3.1.4-py2.py3-none-any.whl
+Collecting selenium (from bzt)
+  Downloading https://files.pythonhosted.org/packages/b0/c9/52390baa8d6b65c3e3b89f522c3a0fcf58f2b4faf37893ef9d97cddde699/selenium-3.14.1-py2.py3-none-any.whl (902kB)
+Collecting progressbar33 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/71/fc/7c8e01f41a6e671d7b11be470eeb3d15339c75ce5559935f3f55890eec6b/progressbar33-2.4.tar.gz
+Collecting cssselect (from bzt)
+  Downloading https://files.pythonhosted.org/packages/7b/44/25b7283e50585f0b4156960691d951b05d061abf4a714078393e51929b30/cssselect-1.0.3-py2.py3-none-any.whl
+Collecting pyvirtualdisplay (from bzt)
+  Downloading https://files.pythonhosted.org/packages/39/37/f285403a09cc261c56b6574baace1bdcf4b8c7428c8a7239cbba137bc0eb/PyVirtualDisplay-0.2.1.tar.gz
+Collecting lxml!=4.2.0,>=3.8.0 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/e5/14/f4343239f955442da9da1919a99f7311bc5627522741bada61b2349c8def/lxml-4.2.5-cp27-cp27mu-manylinux1_x86_64.whl (5.8MB)
+Collecting Appium-Python-Client (from bzt)
+  Downloading https://files.pythonhosted.org/packages/65/f4/b31229c97ecd03015f2e2abd79ee998f0b91977062d559270abda9f1f3fe/Appium-Python-Client-0.28.tar.gz
+Collecting astunparse (from bzt)
+  Downloading https://files.pythonhosted.org/packages/0d/9d/1576217f67e7420f5945c15c6afd7045178c4850b148741bdbdbdabbf40e/astunparse-1.6.1-py2.py3-none-any.whl
+Collecting requests>=2.11.1 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/f1/ca/10332a30cb25b627192b4ea272c351bce3ca1091e541245cccbace6051d8/requests-2.20.0-py2.py3-none-any.whl (60kB)
+Collecting urwid (from bzt)
+  Downloading https://files.pythonhosted.org/packages/c7/90/415728875c230fafd13d118512bde3184d810d7bf798a631abc05fac09d0/urwid-2.0.1.tar.gz (604kB)
+Collecting nose (from bzt)
+  Downloading https://files.pythonhosted.org/packages/99/4f/13fb671119e65c4dce97c60e67d3fd9e6f7f809f2b307e2611f4701205cb/nose-1.3.7-py2-none-any.whl (154kB)
+Collecting colorama (from bzt)
+  Downloading https://files.pythonhosted.org/packages/0a/93/6e8289231675d561d476d656c2ee3a868c1cca207e16c118d4503b25e2bf/colorama-0.4.0-py2.py3-none-any.whl
+Collecting pyyaml (from bzt)
+  Downloading https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz (270kB)
+Collecting apiritif>=0.6.7 (from bzt)
+  Downloading https://files.pythonhosted.org/packages/10/b6/456e23af1cb2e1ff61b03a29296a04d28a6b6c59371ff25f409d8b76a335/apiritif-0.6.7-py2.py3-none-any.whl
+Collecting greenlet>=0.4.14; platform_python_implementation == "CPython" (from gevent!=1.3.5->bzt)
+  Downloading https://files.pythonhosted.org/packages/8b/6e/f2d25875713ad0885c8d3c69269697406652e6f64e1a6bd8264f7a609327/greenlet-0.4.15-cp27-cp27mu-manylinux1_x86_64.whl
+Collecting numpy>=1.14.0 (from hdrpy>=0.3.3->bzt)
+  Downloading https://files.pythonhosted.org/packages/9e/eb/c9eda9f4865d669e0bb37ce5c780e86c63daa54ca827b95a171429012d08/numpy-1.15.3-cp27-cp27mu-manylinux1_x86_64.whl (13.8MB)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/lib/python2.7/dist-packages (from pytest>=3->bzt) (39.0.1)
+Collecting py>=1.5.0 (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/3e/c7/3da685ef117d42ac8d71af525208759742dd235f8094221fdaafcd3dba8f/py-1.7.0-py2.py3-none-any.whl (83kB)
+Collecting more-itertools>=4.0.0 (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/fb/d3/77f337876600747ae307ea775ff264c5304a691941cd347382c7932c60ad/more_itertools-4.3.0-py2-none-any.whl (48kB)
+Collecting pluggy>=0.7 (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/1c/e7/017c262070af41fe251401cb0d0e1b7c38f656da634cd0c15604f1f30864/pluggy-0.8.0-py2.py3-none-any.whl
+Collecting pathlib2>=2.2.0; python_version < "3.6" (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/66/a7/9f8d84f31728d78beade9b1271ccbfb290c41c1e4dc13dbd4997ad594dcd/pathlib2-2.3.2-py2.py3-none-any.whl
+Collecting funcsigs; python_version < "3.0" (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/69/cb/f5be453359271714c01b9bd06126eaf2e368f1fddfff30818754b5ac2328/funcsigs-1.0.2-py2.py3-none-any.whl
+Requirement already satisfied, skipping upgrade: six>=1.10.0 in /usr/lib/python2.7/dist-packages (from pytest>=3->bzt) (1.11.0)
+Collecting attrs>=17.4.0 (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/3a/e1/5f9023cc983f1a628a8c2fd051ad19e76ff7b142a0faf329336f9a62a514/attrs-18.2.0-py2.py3-none-any.whl
+Collecting atomicwrites>=1.0 (from pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/3a/9a/9d878f8d885706e2530402de6417141129a943802c084238914fa6798d97/atomicwrites-1.2.1-py2.py3-none-any.whl
+Collecting urllib3 (from selenium->bzt)
+  Downloading https://files.pythonhosted.org/packages/8c/4b/5cbc4cb46095f369117dcb751821e1bef9dd86a07c968d8757e9204c324c/urllib3-1.24-py2.py3-none-any.whl (117kB)
+Collecting EasyProcess (from pyvirtualdisplay->bzt)
+  Downloading https://files.pythonhosted.org/packages/0d/f1/d2de7591e7dfc164d286fa16f051e6c0cf3141825586c3b04ae7cda7ac0f/EasyProcess-0.2.3.tar.gz
+Requirement already satisfied, skipping upgrade: wheel<1.0,>=0.23.0 in /usr/lib/python2.7/dist-packages (from astunparse->bzt) (0.30.0)
+Requirement already satisfied, skipping upgrade: idna<2.8,>=2.5 in /usr/lib/python2.7/dist-packages (from requests>=2.11.1->bzt) (2.6)
+Collecting certifi>=2017.4.17 (from requests>=2.11.1->bzt)
+  Downloading https://files.pythonhosted.org/packages/56/9d/1d02dd80bc4cd955f98980f28c5ee2200e1209292d5f9e9cc8d030d18655/certifi-2018.10.15-py2.py3-none-any.whl (146kB)
+Collecting chardet<3.1.0,>=3.0.2 (from requests>=2.11.1->bzt)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+Collecting unicodecsv (from apiritif>=0.6.7->bzt)
+  Downloading https://files.pythonhosted.org/packages/6f/a4/691ab63b17505a26096608cc309960b5a6bdf39e4ba1a793d5f9b1a53270/unicodecsv-0.14.1.tar.gz
+Collecting jsonpath-rw (from apiritif>=0.6.7->bzt)
+  Downloading https://files.pythonhosted.org/packages/71/7c/45001b1f19af8c4478489fbae4fc657b21c4c669d7a5a036a86882581d85/jsonpath-rw-1.4.0.tar.gz
+Collecting scandir; python_version < "3.5" (from pathlib2>=2.2.0; python_version < "3.6"->pytest>=3->bzt)
+  Downloading https://files.pythonhosted.org/packages/16/2a/557af1181e6b4e30254d5a6163b18f5053791ca66e251e77ab08887e8fe3/scandir-1.9.0.tar.gz
+Collecting decorator (from jsonpath-rw->apiritif>=0.6.7->bzt)
+  Downloading https://files.pythonhosted.org/packages/bc/bb/a24838832ba35baf52f32ab1a49b906b5f82fb7c76b2f6a7e35e140bac30/decorator-4.3.0-py2.py3-none-any.whl
+Collecting ply (from jsonpath-rw->apiritif>=0.6.7->bzt)
+  Downloading https://files.pythonhosted.org/packages/a3/58/35da89ee790598a0700ea49b2a66594140f44dec458c07e8e3d4979137fc/ply-3.11-py2.py3-none-any.whl (49kB)
+Building wheels for collected packages: psutil, terminaltables, progressbar33, pyvirtualdisplay, Appium-Python-Client, urwid, pyyaml, EasyProcess, unicodecsv, jsonpath-rw, scandir
+  Running setup.py bdist_wheel for psutil: started
+  Running setup.py bdist_wheel for psutil: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/e2/9d/ea/1913d16f19bb927c32197308dec69cd8d10b61be8f7e265524
+  Running setup.py bdist_wheel for terminaltables: started
+  Running setup.py bdist_wheel for terminaltables: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/30/6b/50/6c75775b681fb36cdfac7f19799888ef9d8813aff9e379663e
+  Running setup.py bdist_wheel for progressbar33: started
+  Running setup.py bdist_wheel for progressbar33: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/3c/5a/22/73ae955a60c550ce36fae0f23cbb6d55bbf53123ee415f120c
+  Running setup.py bdist_wheel for pyvirtualdisplay: started
+  Running setup.py bdist_wheel for pyvirtualdisplay: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/d1/8c/16/1c64227974ae29c687e4cc30fd691d5c0fd40f54446dde99da
+  Running setup.py bdist_wheel for Appium-Python-Client: started
+  Running setup.py bdist_wheel for Appium-Python-Client: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/6c/66/5a/fdb958254e1879c10ae6b9c310672c147dd626de286b8a4900
+  Running setup.py bdist_wheel for urwid: started
+  Running setup.py bdist_wheel for urwid: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/34/06/50/24011714e101b5ad8518c69175d117a257413e3c15a92983f0
+  Running setup.py bdist_wheel for pyyaml: started
+  Running setup.py bdist_wheel for pyyaml: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/ad/da/0c/74eb680767247273e2cf2723482cb9c924fe70af57c334513f
+  Running setup.py bdist_wheel for EasyProcess: started
+  Running setup.py bdist_wheel for EasyProcess: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/b4/c6/e3/c163b04029d8fccfd54b809802640c1af587a01be8d7a04e1a
+  Running setup.py bdist_wheel for unicodecsv: started
+  Running setup.py bdist_wheel for unicodecsv: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/a6/09/e9/e800279c98a0a8c94543f3de6c8a562f60e51363ed26e71283
+  Running setup.py bdist_wheel for jsonpath-rw: started
+  Running setup.py bdist_wheel for jsonpath-rw: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/5c/00/9a/82822db383c2d96dcebf839786665a185f92d37e5026f9806f
+  Running setup.py bdist_wheel for scandir: started
+  Running setup.py bdist_wheel for scandir: finished with status 'done'
+  Stored in directory: /root/.cache/pip/wheels/f8/0f/92/c4c88ade5511836769f6cfa676ffe9661393a6a648cb173b8f
+Successfully built psutil terminaltables progressbar33 pyvirtualdisplay Appium-Python-Client urwid pyyaml EasyProcess unicodecsv jsonpath-rw scandir
+Installing collected packages: psutil, greenlet, gevent, terminaltables, numpy, hdrpy, py, more-itertools, pluggy, scandir, pathlib2, funcsigs, attrs, atomicwrites, pytest, colorlog, urllib3, selenium, progressbar33, cssselect, EasyProcess, pyvirtualdisplay, lxml, Appium-Python-Client, astunparse, certifi, chardet, requests, urwid, nose, colorama, pyyaml, unicodecsv, decorator, ply, jsonpath-rw, apiritif, bzt
+Successfully installed Appium-Python-Client-0.28 EasyProcess-0.2.3 apiritif-0.6.7 astunparse-1.6.1 atomicwrites-1.2.1 attrs-18.2.0 bzt-1.13.0 certifi-2018.10.15 chardet-3.0.4 colorama-0.4.0 colorlog-3.1.4 cssselect-1.0.3 decorator-4.3.0 funcsigs-1.0.2 gevent-1.3.7 greenlet-0.4.15 hdrpy-0.3.3 jsonpath-rw-1.4.0 lxml-4.2.5 more-itertools-4.3.0 nose-1.3.7 numpy-1.15.3 pathlib2-2.3.2 pluggy-0.8.0 ply-3.11 progressbar33-2.4 psutil-5.4.7 py-1.7.0 pytest-3.9.2 pyvirtualdisplay-0.2.1 pyyaml-3.13 requests-2.20.0 scandir-1.9.0 selenium-3.14.1 terminaltables-3.1.0 unicodecsv-0.14.1 urllib3-1.24 urwid-2.0.1
+$settings:
+  artifacts-dir: /var/log/jmeter/%Y-%m-%d_%H-%M-%S.%f
+Removing intermediate container 9b7e06ef68ff
+ ---> c3d3ec21b307
+Step 6/8 : ENV JAVA_VERSION=11     JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"     JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64"     JRE_HOME="/usr/lib/jvm/java-11-openjdk-amd64/jre"
+ ---> Running in 2daf27a2ad80
+Removing intermediate container 2daf27a2ad80
+ ---> 757961f51c29
+Step 7/8 : RUN apt-get update     && apt-get -y install openjdk-11-jdk     && apt-get clean     && update-ca-certificates -f     && bzt -o execution.0.concurrency=1 -o execution.0.iterations=1 	    -o settings.artifacts-dir="/var/tmp/jmeter/%Y-%m-%d_%H-%M-%S.%f" http://blazedemo.com/     && ls -la /tmp && cat /tmp/jpgc-*.log && ls -la ~/.bzt/jmeter-taurus/*/lib/ext 	&& ls -la ~/.bzt/jmeter-taurus/*/lib/ext/jmeter-plugins-tst-*.jar
+ ---> Running in 016a0c045230
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [83.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:4 http://security.ubuntu.com/ubuntu bionic-security/universe Sources [24.5 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:6 http://security.ubuntu.com/ubuntu bionic-security/multiverse Sources [1,268 B]
+Get:7 http://security.ubuntu.com/ubuntu bionic-security/main Sources [64.2 kB]
+Get:8 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [111 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic/multiverse Sources [216 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [235 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic/main Sources [1,063 kB]
+Get:12 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [1,364 B]
+Get:13 http://archive.ubuntu.com/ubuntu bionic/universe Sources [11.5 MB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic/restricted Sources [5,823 B]
+Get:15 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]
+Get:17 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]
+Get:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1,344 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/restricted Sources [2,092 B]
+Get:20 http://archive.ubuntu.com/ubuntu bionic-updates/main Sources [258 kB]
+Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse Sources [3,273 B]
+Get:22 http://archive.ubuntu.com/ubuntu bionic-updates/universe Sources [120 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [10.8 kB]
+Get:24 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [6,161 B]
+Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [536 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [724 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic-backports/universe Sources [1,115 B]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [2,975 B]
+Fetched 28.3 MB in 35s (814 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  adwaita-icon-theme at-spi2-core ca-certificates-java dconf-gsettings-backend
+  dconf-service fonts-dejavu-extra glib-networking glib-networking-common
+  glib-networking-services gsettings-desktop-schemas gtk-update-icon-cache
+  humanity-icon-theme java-common libasound2 libasound2-data
+  libatk-bridge2.0-0 libatk-wrapper-java libatk-wrapper-java-jni libatk1.0-0
+  libatk1.0-data libatspi2.0-0 libcairo-gobject2 libcolord2 libcroco3
+  libdconf1 libdrm-amdgpu1 libdrm-common libdrm-intel1 libdrm-nouveau2
+  libdrm-radeon1 libdrm2 libegl-mesa0 libegl1 libepoxy0 libfontenc1 libgbm1
+  libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-bin libgdk-pixbuf2.0-common libgif7
+  libgl1 libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libglvnd0 libglx-mesa0
+  libglx0 libgtk-3-0 libgtk-3-bin libgtk-3-common libice-dev libice6
+  libjson-glib-1.0-0 libjson-glib-1.0-common libllvm6.0 libnspr4 libnss3
+  libpciaccess0 libpcsclite1 libproxy1v5 libpthread-stubs0-dev librest-0.7-0
+  librsvg2-2 librsvg2-common libsensors4 libsm-dev libsm6 libsoup-gnome2.4-1
+  libsoup2.4-1 libwayland-client0 libwayland-cursor0 libwayland-egl1-mesa
+  libwayland-server0 libx11-dev libx11-doc libx11-xcb1 libxau-dev libxaw7
+  libxcb-dri2-0 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-shape0
+  libxcb-sync1 libxcb-xfixes0 libxcb1-dev libxcomposite1 libxcursor1
+  libxdamage1 libxdmcp-dev libxfixes3 libxi6 libxinerama1 libxkbcommon0
+  libxmu6 libxmuu1 libxpm4 libxrandr2 libxshmfence1 libxt-dev libxt6 libxtst6
+  libxv1 libxxf86dga1 libxxf86vm1 openjdk-11-jdk-headless openjdk-11-jre
+  openjdk-11-jre-headless shared-mime-info ubuntu-mono x11-utils
+  x11proto-core-dev x11proto-dev xkb-data xorg-sgml-doctools xtrans-dev
+Suggested packages:
+  default-jre libasound2-plugins alsa-utils colord gvfs libice-doc pciutils
+  pcscd librsvg2-bin lm-sensors libsm-doc libxcb-doc libxt-doc openjdk-11-demo
+  openjdk-11-source visualvm libnss-mdns fonts-ipafont-gothic
+  fonts-ipafont-mincho fonts-wqy-microhei | fonts-wqy-zenhei fonts-indic
+  mesa-utils
+The following NEW packages will be installed:
+  adwaita-icon-theme at-spi2-core ca-certificates-java dconf-gsettings-backend
+  dconf-service fonts-dejavu-extra glib-networking glib-networking-common
+  glib-networking-services gsettings-desktop-schemas gtk-update-icon-cache
+  humanity-icon-theme java-common libasound2 libasound2-data
+  libatk-bridge2.0-0 libatk-wrapper-java libatk-wrapper-java-jni libatk1.0-0
+  libatk1.0-data libatspi2.0-0 libcairo-gobject2 libcolord2 libcroco3
+  libdconf1 libdrm-amdgpu1 libdrm-common libdrm-intel1 libdrm-nouveau2
+  libdrm-radeon1 libdrm2 libegl-mesa0 libegl1 libepoxy0 libfontenc1 libgbm1
+  libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-bin libgdk-pixbuf2.0-common libgif7
+  libgl1 libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libglvnd0 libglx-mesa0
+  libglx0 libgtk-3-0 libgtk-3-bin libgtk-3-common libice-dev libice6
+  libjson-glib-1.0-0 libjson-glib-1.0-common libllvm6.0 libnspr4 libnss3
+  libpciaccess0 libpcsclite1 libproxy1v5 libpthread-stubs0-dev librest-0.7-0
+  librsvg2-2 librsvg2-common libsensors4 libsm-dev libsm6 libsoup-gnome2.4-1
+  libsoup2.4-1 libwayland-client0 libwayland-cursor0 libwayland-egl1-mesa
+  libwayland-server0 libx11-dev libx11-doc libx11-xcb1 libxau-dev libxaw7
+  libxcb-dri2-0 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-shape0
+  libxcb-sync1 libxcb-xfixes0 libxcb1-dev libxcomposite1 libxcursor1
+  libxdamage1 libxdmcp-dev libxfixes3 libxi6 libxinerama1 libxkbcommon0
+  libxmu6 libxmuu1 libxpm4 libxrandr2 libxshmfence1 libxt-dev libxt6 libxtst6
+  libxv1 libxxf86dga1 libxxf86vm1 openjdk-11-jdk openjdk-11-jdk-headless
+  openjdk-11-jre openjdk-11-jre-headless shared-mime-info ubuntu-mono
+  x11-utils x11proto-core-dev x11proto-dev xkb-data xorg-sgml-doctools
+  xtrans-dev
+0 upgraded, 117 newly installed, 0 to remove and 22 not upgraded.
+Need to get 161 MB of archives.
+After this operation, 568 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libice6 amd64 2:1.0.9-2 [40.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsm6 amd64 2:1.2.2-1 [15.8 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxinerama1 amd64 2:1.1.3-1 [7,908 B]
+Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxxf86dga1 amd64 2:1.1.4-1 [13.7 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxxf86vm1 amd64 1:1.1.4-1 [10.6 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 shared-mime-info amd64 1.9-2 [426 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 xkb-data all 2.23.1-1ubuntu1 [325 kB]
+Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm-common all 2.4.91-2 [4,916 B]
+Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm2 amd64 2.4.91-2 [31.1 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxmuu1 amd64 2:1.1.2-2 [9,674 B]
+Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgdk-pixbuf2.0-common all 2.36.11-2 [4,536 B]
+Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgdk-pixbuf2.0-0 amd64 2.36.11-2 [165 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic/main amd64 gtk-update-icon-cache amd64 3.22.30-1ubuntu1 [28.0 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcroco3 amd64 0.6.12-2 [81.3 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 librsvg2-2 amd64 2.40.20-2 [98.6 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 librsvg2-common amd64 2.40.20-2 [5,124 B]
+Get:17 http://archive.ubuntu.com/ubuntu bionic/main amd64 humanity-icon-theme all 0.6.15 [1,250 kB]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 ubuntu-mono all 16.10+18.04.20181005-0ubuntu1 [149 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 adwaita-icon-theme all 3.28.0-1ubuntu1 [3,306 kB]
+Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatspi2.0-0 amd64 2.28.0-1 [59.6 kB]
+Get:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxtst6 amd64 2:1.2.3-1 [12.8 kB]
+Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 at-spi2-core amd64 2.28.0-1 [47.9 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic/main amd64 java-common all 0.63ubuntu1~02 [7,032 B]
+Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnspr4 amd64 2:4.18-1ubuntu1 [112 kB]
+Get:25 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnss3 amd64 2:3.35-2ubuntu2 [1,135 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcsclite1 amd64 1.8.23-1 [21.3 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxi6 amd64 2:1.7.9-1 [29.2 kB]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jre-headless amd64 10.0.2+13-1ubuntu0.18.04.2 [39.5 MB]
+Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 ca-certificates-java all 20180516ubuntu1~18.04.1 [12.2 kB]
+Get:30 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdconf1 amd64 0.26.0-2ubuntu3 [33.1 kB]
+Get:31 http://archive.ubuntu.com/ubuntu bionic/main amd64 dconf-service amd64 0.26.0-2ubuntu3 [28.4 kB]
+Get:32 http://archive.ubuntu.com/ubuntu bionic/main amd64 dconf-gsettings-backend amd64 0.26.0-2ubuntu3 [20.0 kB]
+Get:33 http://archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-extra all 2.37-1 [1,953 kB]
+Get:34 http://archive.ubuntu.com/ubuntu bionic/main amd64 libproxy1v5 amd64 0.4.15-1 [49.5 kB]
+Get:35 http://archive.ubuntu.com/ubuntu bionic/main amd64 glib-networking-common all 2.56.0-1 [3,324 B]
+Get:36 http://archive.ubuntu.com/ubuntu bionic/main amd64 glib-networking-services amd64 2.56.0-1 [8,488 B]
+Get:37 http://archive.ubuntu.com/ubuntu bionic/main amd64 gsettings-desktop-schemas all 3.28.0-1ubuntu1 [27.8 kB]
+Get:38 http://archive.ubuntu.com/ubuntu bionic/main amd64 glib-networking amd64 2.56.0-1 [56.7 kB]
+Get:39 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libasound2-data all 1.1.3-5ubuntu0.1 [36.3 kB]
+Get:40 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libasound2 amd64 1.1.3-5ubuntu0.1 [359 kB]
+Get:41 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatk1.0-data all 2.28.1-1 [2,992 B]
+Get:42 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatk1.0-0 amd64 2.28.1-1 [43.9 kB]
+Get:43 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatk-bridge2.0-0 amd64 2.26.2-1 [57.3 kB]
+Get:44 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontenc1 amd64 1:1.1.3-1 [13.9 kB]
+Get:45 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglvnd0 amd64 1.0.0-2ubuntu2.2 [46.6 kB]
+Get:46 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglapi-mesa amd64 18.0.5-0ubuntu0~18.04.1 [23.7 kB]
+Get:47 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-xcb1 amd64 2:1.6.4-3ubuntu0.1 [9,560 B]
+Get:48 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-dri2-0 amd64 1.13-1 [6,928 B]
+Get:49 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-dri3-0 amd64 1.13-1 [6,536 B]
+Get:50 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-glx0 amd64 1.13-1 [22.0 kB]
+Get:51 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-present0 amd64 1.13-1 [5,540 B]
+Get:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-sync1 amd64 1.13-1 [8,808 B]
+Get:53 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdamage1 amd64 1:1.1.4-3 [6,934 B]
+Get:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxfixes3 amd64 1:5.0.3-1 [10.8 kB]
+Get:55 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxshmfence1 amd64 1.3-1 [5,028 B]
+Get:56 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm-amdgpu1 amd64 2.4.91-2 [19.0 kB]
+Get:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpciaccess0 amd64 0.14-1 [17.9 kB]
+Get:58 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm-intel1 amd64 2.4.91-2 [59.8 kB]
+Get:59 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm-nouveau2 amd64 2.4.91-2 [16.5 kB]
+Get:60 http://archive.ubuntu.com/ubuntu bionic/main amd64 libdrm-radeon1 amd64 2.4.91-2 [21.7 kB]
+Get:61 http://archive.ubuntu.com/ubuntu bionic/main amd64 libllvm6.0 amd64 1:6.0-1ubuntu2 [14.5 MB]
+Get:62 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsensors4 amd64 1:3.4.0-4 [28.8 kB]
+Get:63 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgl1-mesa-dri amd64 18.0.5-0ubuntu0~18.04.1 [6,011 kB]
+Get:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglx-mesa0 amd64 18.0.5-0ubuntu0~18.04.1 [132 kB]
+Get:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglx0 amd64 1.0.0-2ubuntu2.2 [28.1 kB]
+Get:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgl1 amd64 1.0.0-2ubuntu2.2 [84.8 kB]
+Get:67 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgl1-mesa-glx amd64 18.0.5-0ubuntu0~18.04.1 [3,780 B]
+Get:68 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxt6 amd64 1:1.1.5-1 [160 kB]
+Get:69 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxmu6 amd64 2:1.1.2-2 [46.0 kB]
+Get:70 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxpm4 amd64 1:3.5.12-1 [34.0 kB]
+Get:71 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxaw7 amd64 2:1.0.13-1 [173 kB]
+Get:72 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-shape0 amd64 1.13-1 [5,964 B]
+Get:73 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcomposite1 amd64 1:0.4.4-2 [6,988 B]
+Get:74 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxrandr2 amd64 2:1.5.1-1 [18.1 kB]
+Get:75 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxv1 amd64 2:1.0.11-1 [10.7 kB]
+Get:76 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11-utils amd64 7.7+3build1 [196 kB]
+Get:77 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatk-wrapper-java all 0.33.3-20ubuntu0.1 [34.7 kB]
+Get:78 http://archive.ubuntu.com/ubuntu bionic/main amd64 libatk-wrapper-java-jni amd64 0.33.3-20ubuntu0.1 [28.3 kB]
+Get:79 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcairo-gobject2 amd64 1.15.10-2 [17.2 kB]
+Get:80 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcolord2 amd64 1.3.3-2build1 [107 kB]
+Get:81 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwayland-server0 amd64 1.14.0-2 [28.8 kB]
+Get:82 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgbm1 amd64 18.0.5-0ubuntu0~18.04.1 [24.4 kB]
+Get:83 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwayland-client0 amd64 1.14.0-2 [22.7 kB]
+Get:84 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb-xfixes0 amd64 1.13-1 [9,340 B]
+Get:85 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libegl-mesa0 amd64 18.0.5-0ubuntu0~18.04.1 [84.1 kB]
+Get:86 http://archive.ubuntu.com/ubuntu bionic/main amd64 libepoxy0 amd64 1.4.3-1 [181 kB]
+Get:87 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgdk-pixbuf2.0-bin amd64 2.36.11-2 [7,864 B]
+Get:88 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgif7 amd64 5.1.4-2 [30.6 kB]
+Get:89 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgtk-3-common all 3.22.30-1ubuntu1 [228 kB]
+Get:90 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjson-glib-1.0-common all 1.4.2-3 [3,464 B]
+Get:91 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjson-glib-1.0-0 amd64 1.4.2-3 [58.5 kB]
+Get:92 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsoup2.4-1 amd64 2.62.1-1ubuntu0.1 [292 kB]
+Get:93 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libsoup-gnome2.4-1 amd64 2.62.1-1ubuntu0.1 [5,092 B]
+Get:94 http://archive.ubuntu.com/ubuntu bionic/main amd64 librest-0.7-0 amd64 0.8.0-2 [31.8 kB]
+Get:95 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwayland-cursor0 amd64 1.14.0-2 [9,976 B]
+Get:96 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libegl1 amd64 1.0.0-2ubuntu2.2 [31.9 kB]
+Get:97 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libwayland-egl1-mesa amd64 18.0.5-0ubuntu0~18.04.1 [7,148 B]
+Get:98 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcursor1 amd64 1:1.1.15-1 [19.8 kB]
+Get:99 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxkbcommon0 amd64 0.8.0-1 [97.6 kB]
+Get:100 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgtk-3-0 amd64 3.22.30-1ubuntu1 [2,505 kB]
+Get:101 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgtk-3-bin amd64 3.22.30-1ubuntu1 [57.3 kB]
+Get:102 http://archive.ubuntu.com/ubuntu bionic/main amd64 xorg-sgml-doctools all 1:1.11-1 [12.9 kB]
+Get:103 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11proto-dev all 2018.4-4 [251 kB]
+Get:104 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11proto-core-dev all 2018.4-4 [2,620 B]
+Get:105 http://archive.ubuntu.com/ubuntu bionic/main amd64 libice-dev amd64 2:1.0.9-2 [46.8 kB]
+Get:106 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpthread-stubs0-dev amd64 0.3-4 [4,068 B]
+Get:107 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsm-dev amd64 2:1.2.2-1 [16.2 kB]
+Get:108 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxau-dev amd64 1:1.0.8-1 [11.1 kB]
+Get:109 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp-dev amd64 1:1.1.2-3 [25.1 kB]
+Get:110 http://archive.ubuntu.com/ubuntu bionic/main amd64 xtrans-dev all 1.3.5-1 [70.5 kB]
+Get:111 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb1-dev amd64 1.13-1 [80.0 kB]
+Get:112 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-dev amd64 2:1.6.4-3ubuntu0.1 [641 kB]
+Get:113 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-doc all 2:1.6.4-3ubuntu0.1 [2,065 kB]
+Get:114 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxt-dev amd64 1:1.1.5-1 [395 kB]
+Get:115 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jre amd64 10.0.2+13-1ubuntu0.18.04.2 [53.2 kB]
+Get:116 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jdk-headless amd64 10.0.2+13-1ubuntu0.18.04.2 [78.1 MB]
+Get:117 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openjdk-11-jdk amd64 10.0.2+13-1ubuntu0.18.04.2 [3,985 kB]
+[91mdpkg-preconfigure: unable to re-open stdin: 
+[0mFetched 161 MB in 40s (3,993 kB/s)
+Selecting previously unselected package libice6:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 26140 files and directories currently installed.)
+Preparing to unpack .../000-libice6_2%3a1.0.9-2_amd64.deb ...
+Unpacking libice6:amd64 (2:1.0.9-2) ...
+Selecting previously unselected package libsm6:amd64.
+Preparing to unpack .../001-libsm6_2%3a1.2.2-1_amd64.deb ...
+Unpacking libsm6:amd64 (2:1.2.2-1) ...
+Selecting previously unselected package libxinerama1:amd64.
+Preparing to unpack .../002-libxinerama1_2%3a1.1.3-1_amd64.deb ...
+Unpacking libxinerama1:amd64 (2:1.1.3-1) ...
+Selecting previously unselected package libxxf86dga1:amd64.
+Preparing to unpack .../003-libxxf86dga1_2%3a1.1.4-1_amd64.deb ...
+Unpacking libxxf86dga1:amd64 (2:1.1.4-1) ...
+Selecting previously unselected package libxxf86vm1:amd64.
+Preparing to unpack .../004-libxxf86vm1_1%3a1.1.4-1_amd64.deb ...
+Unpacking libxxf86vm1:amd64 (1:1.1.4-1) ...
+Selecting previously unselected package shared-mime-info.
+Preparing to unpack .../005-shared-mime-info_1.9-2_amd64.deb ...
+Unpacking shared-mime-info (1.9-2) ...
+Selecting previously unselected package xkb-data.
+Preparing to unpack .../006-xkb-data_2.23.1-1ubuntu1_all.deb ...
+Unpacking xkb-data (2.23.1-1ubuntu1) ...
+Selecting previously unselected package libdrm-common.
+Preparing to unpack .../007-libdrm-common_2.4.91-2_all.deb ...
+Unpacking libdrm-common (2.4.91-2) ...
+Selecting previously unselected package libdrm2:amd64.
+Preparing to unpack .../008-libdrm2_2.4.91-2_amd64.deb ...
+Unpacking libdrm2:amd64 (2.4.91-2) ...
+Selecting previously unselected package libxmuu1:amd64.
+Preparing to unpack .../009-libxmuu1_2%3a1.1.2-2_amd64.deb ...
+Unpacking libxmuu1:amd64 (2:1.1.2-2) ...
+Selecting previously unselected package libgdk-pixbuf2.0-common.
+Preparing to unpack .../010-libgdk-pixbuf2.0-common_2.36.11-2_all.deb ...
+Unpacking libgdk-pixbuf2.0-common (2.36.11-2) ...
+Selecting previously unselected package libgdk-pixbuf2.0-0:amd64.
+Preparing to unpack .../011-libgdk-pixbuf2.0-0_2.36.11-2_amd64.deb ...
+Unpacking libgdk-pixbuf2.0-0:amd64 (2.36.11-2) ...
+Selecting previously unselected package gtk-update-icon-cache.
+Preparing to unpack .../012-gtk-update-icon-cache_3.22.30-1ubuntu1_amd64.deb ...
+No diversion 'diversion of /usr/sbin/update-icon-caches to /usr/sbin/update-icon-caches.gtk2 by libgtk-3-bin', none removed.
+No diversion 'diversion of /usr/share/man/man8/update-icon-caches.8.gz to /usr/share/man/man8/update-icon-caches.gtk2.8.gz by libgtk-3-bin', none removed.
+Unpacking gtk-update-icon-cache (3.22.30-1ubuntu1) ...
+Selecting previously unselected package libcroco3:amd64.
+Preparing to unpack .../013-libcroco3_0.6.12-2_amd64.deb ...
+Unpacking libcroco3:amd64 (0.6.12-2) ...
+Selecting previously unselected package librsvg2-2:amd64.
+Preparing to unpack .../014-librsvg2-2_2.40.20-2_amd64.deb ...
+Unpacking librsvg2-2:amd64 (2.40.20-2) ...
+Selecting previously unselected package librsvg2-common:amd64.
+Preparing to unpack .../015-librsvg2-common_2.40.20-2_amd64.deb ...
+Unpacking librsvg2-common:amd64 (2.40.20-2) ...
+Selecting previously unselected package humanity-icon-theme.
+Preparing to unpack .../016-humanity-icon-theme_0.6.15_all.deb ...
+Unpacking humanity-icon-theme (0.6.15) ...
+Selecting previously unselected package ubuntu-mono.
+Preparing to unpack .../017-ubuntu-mono_16.10+18.04.20181005-0ubuntu1_all.deb ...
+Unpacking ubuntu-mono (16.10+18.04.20181005-0ubuntu1) ...
+Selecting previously unselected package adwaita-icon-theme.
+Preparing to unpack .../018-adwaita-icon-theme_3.28.0-1ubuntu1_all.deb ...
+Unpacking adwaita-icon-theme (3.28.0-1ubuntu1) ...
+Selecting previously unselected package libatspi2.0-0:amd64.
+Preparing to unpack .../019-libatspi2.0-0_2.28.0-1_amd64.deb ...
+Unpacking libatspi2.0-0:amd64 (2.28.0-1) ...
+Selecting previously unselected package libxtst6:amd64.
+Preparing to unpack .../020-libxtst6_2%3a1.2.3-1_amd64.deb ...
+Unpacking libxtst6:amd64 (2:1.2.3-1) ...
+Selecting previously unselected package at-spi2-core.
+Preparing to unpack .../021-at-spi2-core_2.28.0-1_amd64.deb ...
+Unpacking at-spi2-core (2.28.0-1) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../022-java-common_0.63ubuntu1~02_all.deb ...
+Unpacking java-common (0.63ubuntu1~02) ...
+Selecting previously unselected package libnspr4:amd64.
+Preparing to unpack .../023-libnspr4_2%3a4.18-1ubuntu1_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.18-1ubuntu1) ...
+Selecting previously unselected package libnss3:amd64.
+Preparing to unpack .../024-libnss3_2%3a3.35-2ubuntu2_amd64.deb ...
+Unpacking libnss3:amd64 (2:3.35-2ubuntu2) ...
+Selecting previously unselected package libpcsclite1:amd64.
+Preparing to unpack .../025-libpcsclite1_1.8.23-1_amd64.deb ...
+Unpacking libpcsclite1:amd64 (1.8.23-1) ...
+Selecting previously unselected package libxi6:amd64.
+Preparing to unpack .../026-libxi6_2%3a1.7.9-1_amd64.deb ...
+Unpacking libxi6:amd64 (2:1.7.9-1) ...
+Selecting previously unselected package openjdk-11-jre-headless:amd64.
+Preparing to unpack .../027-openjdk-11-jre-headless_10.0.2+13-1ubuntu0.18.04.2_amd64.deb ...
+Unpacking openjdk-11-jre-headless:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../028-ca-certificates-java_20180516ubuntu1~18.04.1_all.deb ...
+Unpacking ca-certificates-java (20180516ubuntu1~18.04.1) ...
+Selecting previously unselected package libdconf1:amd64.
+Preparing to unpack .../029-libdconf1_0.26.0-2ubuntu3_amd64.deb ...
+Unpacking libdconf1:amd64 (0.26.0-2ubuntu3) ...
+Selecting previously unselected package dconf-service.
+Preparing to unpack .../030-dconf-service_0.26.0-2ubuntu3_amd64.deb ...
+Unpacking dconf-service (0.26.0-2ubuntu3) ...
+Selecting previously unselected package dconf-gsettings-backend:amd64.
+Preparing to unpack .../031-dconf-gsettings-backend_0.26.0-2ubuntu3_amd64.deb ...
+Unpacking dconf-gsettings-backend:amd64 (0.26.0-2ubuntu3) ...
+Selecting previously unselected package fonts-dejavu-extra.
+Preparing to unpack .../032-fonts-dejavu-extra_2.37-1_all.deb ...
+Unpacking fonts-dejavu-extra (2.37-1) ...
+Selecting previously unselected package libproxy1v5:amd64.
+Preparing to unpack .../033-libproxy1v5_0.4.15-1_amd64.deb ...
+Unpacking libproxy1v5:amd64 (0.4.15-1) ...
+Selecting previously unselected package glib-networking-common.
+Preparing to unpack .../034-glib-networking-common_2.56.0-1_all.deb ...
+Unpacking glib-networking-common (2.56.0-1) ...
+Selecting previously unselected package glib-networking-services.
+Preparing to unpack .../035-glib-networking-services_2.56.0-1_amd64.deb ...
+Unpacking glib-networking-services (2.56.0-1) ...
+Selecting previously unselected package gsettings-desktop-schemas.
+Preparing to unpack .../036-gsettings-desktop-schemas_3.28.0-1ubuntu1_all.deb ...
+Unpacking gsettings-desktop-schemas (3.28.0-1ubuntu1) ...
+Selecting previously unselected package glib-networking:amd64.
+Preparing to unpack .../037-glib-networking_2.56.0-1_amd64.deb ...
+Unpacking glib-networking:amd64 (2.56.0-1) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../038-libasound2-data_1.1.3-5ubuntu0.1_all.deb ...
+Unpacking libasound2-data (1.1.3-5ubuntu0.1) ...
+Selecting previously unselected package libasound2:amd64.
+Preparing to unpack .../039-libasound2_1.1.3-5ubuntu0.1_amd64.deb ...
+Unpacking libasound2:amd64 (1.1.3-5ubuntu0.1) ...
+Selecting previously unselected package libatk1.0-data.
+Preparing to unpack .../040-libatk1.0-data_2.28.1-1_all.deb ...
+Unpacking libatk1.0-data (2.28.1-1) ...
+Selecting previously unselected package libatk1.0-0:amd64.
+Preparing to unpack .../041-libatk1.0-0_2.28.1-1_amd64.deb ...
+Unpacking libatk1.0-0:amd64 (2.28.1-1) ...
+Selecting previously unselected package libatk-bridge2.0-0:amd64.
+Preparing to unpack .../042-libatk-bridge2.0-0_2.26.2-1_amd64.deb ...
+Unpacking libatk-bridge2.0-0:amd64 (2.26.2-1) ...
+Selecting previously unselected package libfontenc1:amd64.
+Preparing to unpack .../043-libfontenc1_1%3a1.1.3-1_amd64.deb ...
+Unpacking libfontenc1:amd64 (1:1.1.3-1) ...
+Selecting previously unselected package libglvnd0:amd64.
+Preparing to unpack .../044-libglvnd0_1.0.0-2ubuntu2.2_amd64.deb ...
+Unpacking libglvnd0:amd64 (1.0.0-2ubuntu2.2) ...
+Selecting previously unselected package libglapi-mesa:amd64.
+Preparing to unpack .../045-libglapi-mesa_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libglapi-mesa:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libx11-xcb1:amd64.
+Preparing to unpack .../046-libx11-xcb1_2%3a1.6.4-3ubuntu0.1_amd64.deb ...
+Unpacking libx11-xcb1:amd64 (2:1.6.4-3ubuntu0.1) ...
+Selecting previously unselected package libxcb-dri2-0:amd64.
+Preparing to unpack .../047-libxcb-dri2-0_1.13-1_amd64.deb ...
+Unpacking libxcb-dri2-0:amd64 (1.13-1) ...
+Selecting previously unselected package libxcb-dri3-0:amd64.
+Preparing to unpack .../048-libxcb-dri3-0_1.13-1_amd64.deb ...
+Unpacking libxcb-dri3-0:amd64 (1.13-1) ...
+Selecting previously unselected package libxcb-glx0:amd64.
+Preparing to unpack .../049-libxcb-glx0_1.13-1_amd64.deb ...
+Unpacking libxcb-glx0:amd64 (1.13-1) ...
+Selecting previously unselected package libxcb-present0:amd64.
+Preparing to unpack .../050-libxcb-present0_1.13-1_amd64.deb ...
+Unpacking libxcb-present0:amd64 (1.13-1) ...
+Selecting previously unselected package libxcb-sync1:amd64.
+Preparing to unpack .../051-libxcb-sync1_1.13-1_amd64.deb ...
+Unpacking libxcb-sync1:amd64 (1.13-1) ...
+Selecting previously unselected package libxdamage1:amd64.
+Preparing to unpack .../052-libxdamage1_1%3a1.1.4-3_amd64.deb ...
+Unpacking libxdamage1:amd64 (1:1.1.4-3) ...
+Selecting previously unselected package libxfixes3:amd64.
+Preparing to unpack .../053-libxfixes3_1%3a5.0.3-1_amd64.deb ...
+Unpacking libxfixes3:amd64 (1:5.0.3-1) ...
+Selecting previously unselected package libxshmfence1:amd64.
+Preparing to unpack .../054-libxshmfence1_1.3-1_amd64.deb ...
+Unpacking libxshmfence1:amd64 (1.3-1) ...
+Selecting previously unselected package libdrm-amdgpu1:amd64.
+Preparing to unpack .../055-libdrm-amdgpu1_2.4.91-2_amd64.deb ...
+Unpacking libdrm-amdgpu1:amd64 (2.4.91-2) ...
+Selecting previously unselected package libpciaccess0:amd64.
+Preparing to unpack .../056-libpciaccess0_0.14-1_amd64.deb ...
+Unpacking libpciaccess0:amd64 (0.14-1) ...
+Selecting previously unselected package libdrm-intel1:amd64.
+Preparing to unpack .../057-libdrm-intel1_2.4.91-2_amd64.deb ...
+Unpacking libdrm-intel1:amd64 (2.4.91-2) ...
+Selecting previously unselected package libdrm-nouveau2:amd64.
+Preparing to unpack .../058-libdrm-nouveau2_2.4.91-2_amd64.deb ...
+Unpacking libdrm-nouveau2:amd64 (2.4.91-2) ...
+Selecting previously unselected package libdrm-radeon1:amd64.
+Preparing to unpack .../059-libdrm-radeon1_2.4.91-2_amd64.deb ...
+Unpacking libdrm-radeon1:amd64 (2.4.91-2) ...
+Selecting previously unselected package libllvm6.0:amd64.
+Preparing to unpack .../060-libllvm6.0_1%3a6.0-1ubuntu2_amd64.deb ...
+Unpacking libllvm6.0:amd64 (1:6.0-1ubuntu2) ...
+Selecting previously unselected package libsensors4:amd64.
+Preparing to unpack .../061-libsensors4_1%3a3.4.0-4_amd64.deb ...
+Unpacking libsensors4:amd64 (1:3.4.0-4) ...
+Selecting previously unselected package libgl1-mesa-dri:amd64.
+Preparing to unpack .../062-libgl1-mesa-dri_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libgl1-mesa-dri:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libglx-mesa0:amd64.
+Preparing to unpack .../063-libglx-mesa0_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libglx-mesa0:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libglx0:amd64.
+Preparing to unpack .../064-libglx0_1.0.0-2ubuntu2.2_amd64.deb ...
+Unpacking libglx0:amd64 (1.0.0-2ubuntu2.2) ...
+Selecting previously unselected package libgl1:amd64.
+Preparing to unpack .../065-libgl1_1.0.0-2ubuntu2.2_amd64.deb ...
+Unpacking libgl1:amd64 (1.0.0-2ubuntu2.2) ...
+Selecting previously unselected package libgl1-mesa-glx:amd64.
+Preparing to unpack .../066-libgl1-mesa-glx_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libgl1-mesa-glx:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libxt6:amd64.
+Preparing to unpack .../067-libxt6_1%3a1.1.5-1_amd64.deb ...
+Unpacking libxt6:amd64 (1:1.1.5-1) ...
+Selecting previously unselected package libxmu6:amd64.
+Preparing to unpack .../068-libxmu6_2%3a1.1.2-2_amd64.deb ...
+Unpacking libxmu6:amd64 (2:1.1.2-2) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../069-libxpm4_1%3a3.5.12-1_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.12-1) ...
+Selecting previously unselected package libxaw7:amd64.
+Preparing to unpack .../070-libxaw7_2%3a1.0.13-1_amd64.deb ...
+Unpacking libxaw7:amd64 (2:1.0.13-1) ...
+Selecting previously unselected package libxcb-shape0:amd64.
+Preparing to unpack .../071-libxcb-shape0_1.13-1_amd64.deb ...
+Unpacking libxcb-shape0:amd64 (1.13-1) ...
+Selecting previously unselected package libxcomposite1:amd64.
+Preparing to unpack .../072-libxcomposite1_1%3a0.4.4-2_amd64.deb ...
+Unpacking libxcomposite1:amd64 (1:0.4.4-2) ...
+Selecting previously unselected package libxrandr2:amd64.
+Preparing to unpack .../073-libxrandr2_2%3a1.5.1-1_amd64.deb ...
+Unpacking libxrandr2:amd64 (2:1.5.1-1) ...
+Selecting previously unselected package libxv1:amd64.
+Preparing to unpack .../074-libxv1_2%3a1.0.11-1_amd64.deb ...
+Unpacking libxv1:amd64 (2:1.0.11-1) ...
+Selecting previously unselected package x11-utils.
+Preparing to unpack .../075-x11-utils_7.7+3build1_amd64.deb ...
+Unpacking x11-utils (7.7+3build1) ...
+Selecting previously unselected package libatk-wrapper-java.
+Preparing to unpack .../076-libatk-wrapper-java_0.33.3-20ubuntu0.1_all.deb ...
+Unpacking libatk-wrapper-java (0.33.3-20ubuntu0.1) ...
+Selecting previously unselected package libatk-wrapper-java-jni:amd64.
+Preparing to unpack .../077-libatk-wrapper-java-jni_0.33.3-20ubuntu0.1_amd64.deb ...
+Unpacking libatk-wrapper-java-jni:amd64 (0.33.3-20ubuntu0.1) ...
+Selecting previously unselected package libcairo-gobject2:amd64.
+Preparing to unpack .../078-libcairo-gobject2_1.15.10-2_amd64.deb ...
+Unpacking libcairo-gobject2:amd64 (1.15.10-2) ...
+Selecting previously unselected package libcolord2:amd64.
+Preparing to unpack .../079-libcolord2_1.3.3-2build1_amd64.deb ...
+Unpacking libcolord2:amd64 (1.3.3-2build1) ...
+Selecting previously unselected package libwayland-server0:amd64.
+Preparing to unpack .../080-libwayland-server0_1.14.0-2_amd64.deb ...
+Unpacking libwayland-server0:amd64 (1.14.0-2) ...
+Selecting previously unselected package libgbm1:amd64.
+Preparing to unpack .../081-libgbm1_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libgbm1:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libwayland-client0:amd64.
+Preparing to unpack .../082-libwayland-client0_1.14.0-2_amd64.deb ...
+Unpacking libwayland-client0:amd64 (1.14.0-2) ...
+Selecting previously unselected package libxcb-xfixes0:amd64.
+Preparing to unpack .../083-libxcb-xfixes0_1.13-1_amd64.deb ...
+Unpacking libxcb-xfixes0:amd64 (1.13-1) ...
+Selecting previously unselected package libegl-mesa0:amd64.
+Preparing to unpack .../084-libegl-mesa0_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libegl-mesa0:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libepoxy0:amd64.
+Preparing to unpack .../085-libepoxy0_1.4.3-1_amd64.deb ...
+Unpacking libepoxy0:amd64 (1.4.3-1) ...
+Selecting previously unselected package libgdk-pixbuf2.0-bin.
+Preparing to unpack .../086-libgdk-pixbuf2.0-bin_2.36.11-2_amd64.deb ...
+Unpacking libgdk-pixbuf2.0-bin (2.36.11-2) ...
+Selecting previously unselected package libgif7:amd64.
+Preparing to unpack .../087-libgif7_5.1.4-2_amd64.deb ...
+Unpacking libgif7:amd64 (5.1.4-2) ...
+Selecting previously unselected package libgtk-3-common.
+Preparing to unpack .../088-libgtk-3-common_3.22.30-1ubuntu1_all.deb ...
+Unpacking libgtk-3-common (3.22.30-1ubuntu1) ...
+Selecting previously unselected package libjson-glib-1.0-common.
+Preparing to unpack .../089-libjson-glib-1.0-common_1.4.2-3_all.deb ...
+Unpacking libjson-glib-1.0-common (1.4.2-3) ...
+Selecting previously unselected package libjson-glib-1.0-0:amd64.
+Preparing to unpack .../090-libjson-glib-1.0-0_1.4.2-3_amd64.deb ...
+Unpacking libjson-glib-1.0-0:amd64 (1.4.2-3) ...
+Selecting previously unselected package libsoup2.4-1:amd64.
+Preparing to unpack .../091-libsoup2.4-1_2.62.1-1ubuntu0.1_amd64.deb ...
+Unpacking libsoup2.4-1:amd64 (2.62.1-1ubuntu0.1) ...
+Selecting previously unselected package libsoup-gnome2.4-1:amd64.
+Preparing to unpack .../092-libsoup-gnome2.4-1_2.62.1-1ubuntu0.1_amd64.deb ...
+Unpacking libsoup-gnome2.4-1:amd64 (2.62.1-1ubuntu0.1) ...
+Selecting previously unselected package librest-0.7-0:amd64.
+Preparing to unpack .../093-librest-0.7-0_0.8.0-2_amd64.deb ...
+Unpacking librest-0.7-0:amd64 (0.8.0-2) ...
+Selecting previously unselected package libwayland-cursor0:amd64.
+Preparing to unpack .../094-libwayland-cursor0_1.14.0-2_amd64.deb ...
+Unpacking libwayland-cursor0:amd64 (1.14.0-2) ...
+Selecting previously unselected package libegl1:amd64.
+Preparing to unpack .../095-libegl1_1.0.0-2ubuntu2.2_amd64.deb ...
+Unpacking libegl1:amd64 (1.0.0-2ubuntu2.2) ...
+Selecting previously unselected package libwayland-egl1-mesa:amd64.
+Preparing to unpack .../096-libwayland-egl1-mesa_18.0.5-0ubuntu0~18.04.1_amd64.deb ...
+Unpacking libwayland-egl1-mesa:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Selecting previously unselected package libxcursor1:amd64.
+Preparing to unpack .../097-libxcursor1_1%3a1.1.15-1_amd64.deb ...
+Unpacking libxcursor1:amd64 (1:1.1.15-1) ...
+Selecting previously unselected package libxkbcommon0:amd64.
+Preparing to unpack .../098-libxkbcommon0_0.8.0-1_amd64.deb ...
+Unpacking libxkbcommon0:amd64 (0.8.0-1) ...
+Selecting previously unselected package libgtk-3-0:amd64.
+Preparing to unpack .../099-libgtk-3-0_3.22.30-1ubuntu1_amd64.deb ...
+Unpacking libgtk-3-0:amd64 (3.22.30-1ubuntu1) ...
+Selecting previously unselected package libgtk-3-bin.
+Preparing to unpack .../100-libgtk-3-bin_3.22.30-1ubuntu1_amd64.deb ...
+Unpacking libgtk-3-bin (3.22.30-1ubuntu1) ...
+Selecting previously unselected package xorg-sgml-doctools.
+Preparing to unpack .../101-xorg-sgml-doctools_1%3a1.11-1_all.deb ...
+Unpacking xorg-sgml-doctools (1:1.11-1) ...
+Selecting previously unselected package x11proto-dev.
+Preparing to unpack .../102-x11proto-dev_2018.4-4_all.deb ...
+Unpacking x11proto-dev (2018.4-4) ...
+Selecting previously unselected package x11proto-core-dev.
+Preparing to unpack .../103-x11proto-core-dev_2018.4-4_all.deb ...
+Unpacking x11proto-core-dev (2018.4-4) ...
+Selecting previously unselected package libice-dev:amd64.
+Preparing to unpack .../104-libice-dev_2%3a1.0.9-2_amd64.deb ...
+Unpacking libice-dev:amd64 (2:1.0.9-2) ...
+Selecting previously unselected package libpthread-stubs0-dev:amd64.
+Preparing to unpack .../105-libpthread-stubs0-dev_0.3-4_amd64.deb ...
+Unpacking libpthread-stubs0-dev:amd64 (0.3-4) ...
+Selecting previously unselected package libsm-dev:amd64.
+Preparing to unpack .../106-libsm-dev_2%3a1.2.2-1_amd64.deb ...
+Unpacking libsm-dev:amd64 (2:1.2.2-1) ...
+Selecting previously unselected package libxau-dev:amd64.
+Preparing to unpack .../107-libxau-dev_1%3a1.0.8-1_amd64.deb ...
+Unpacking libxau-dev:amd64 (1:1.0.8-1) ...
+Selecting previously unselected package libxdmcp-dev:amd64.
+Preparing to unpack .../108-libxdmcp-dev_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp-dev:amd64 (1:1.1.2-3) ...
+Selecting previously unselected package xtrans-dev.
+Preparing to unpack .../109-xtrans-dev_1.3.5-1_all.deb ...
+Unpacking xtrans-dev (1.3.5-1) ...
+Selecting previously unselected package libxcb1-dev:amd64.
+Preparing to unpack .../110-libxcb1-dev_1.13-1_amd64.deb ...
+Unpacking libxcb1-dev:amd64 (1.13-1) ...
+Selecting previously unselected package libx11-dev:amd64.
+Preparing to unpack .../111-libx11-dev_2%3a1.6.4-3ubuntu0.1_amd64.deb ...
+Unpacking libx11-dev:amd64 (2:1.6.4-3ubuntu0.1) ...
+Selecting previously unselected package libx11-doc.
+Preparing to unpack .../112-libx11-doc_2%3a1.6.4-3ubuntu0.1_all.deb ...
+Unpacking libx11-doc (2:1.6.4-3ubuntu0.1) ...
+Selecting previously unselected package libxt-dev:amd64.
+Preparing to unpack .../113-libxt-dev_1%3a1.1.5-1_amd64.deb ...
+Unpacking libxt-dev:amd64 (1:1.1.5-1) ...
+Selecting previously unselected package openjdk-11-jre:amd64.
+Preparing to unpack .../114-openjdk-11-jre_10.0.2+13-1ubuntu0.18.04.2_amd64.deb ...
+Unpacking openjdk-11-jre:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+Selecting previously unselected package openjdk-11-jdk-headless:amd64.
+Preparing to unpack .../115-openjdk-11-jdk-headless_10.0.2+13-1ubuntu0.18.04.2_amd64.deb ...
+Unpacking openjdk-11-jdk-headless:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+Selecting previously unselected package openjdk-11-jdk:amd64.
+Preparing to unpack .../116-openjdk-11-jdk_10.0.2+13-1ubuntu0.18.04.2_amd64.deb ...
+Unpacking openjdk-11-jdk:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+Setting up libxi6:amd64 (2:1.7.9-1) ...
+Setting up libxcb-present0:amd64 (1.13-1) ...
+Setting up libglvnd0:amd64 (1.0.0-2ubuntu2.2) ...
+Setting up libxinerama1:amd64 (2:1.1.3-1) ...
+Setting up libxcb-dri2-0:amd64 (1.13-1) ...
+Setting up libxcb-dri3-0:amd64 (1.13-1) ...
+Setting up libxcb-glx0:amd64 (1.13-1) ...
+Setting up libjson-glib-1.0-common (1.4.2-3) ...
+Setting up libxcb-xfixes0:amd64 (1.13-1) ...
+Setting up glib-networking-common (2.56.0-1) ...
+Setting up libxdamage1:amd64 (1:1.1.4-3) ...
+Setting up libxfixes3:amd64 (1:5.0.3-1) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Setting up libllvm6.0:amd64 (1:6.0-1ubuntu2) ...
+Setting up libpcsclite1:amd64 (1.8.23-1) ...
+Setting up libpthread-stubs0-dev:amd64 (0.3-4) ...
+Setting up libatspi2.0-0:amd64 (2.28.0-1) ...
+Processing triggers for libglib2.0-0:amd64 (2.56.2-0ubuntu0.18.04.2) ...
+Setting up libasound2-data (1.1.3-5ubuntu0.1) ...
+Setting up libxshmfence1:amd64 (1.3-1) ...
+Setting up xorg-sgml-doctools (1:1.11-1) ...
+Setting up libwayland-client0:amd64 (1.14.0-2) ...
+Setting up libcairo-gobject2:amd64 (1.15.10-2) ...
+Setting up xkb-data (2.23.1-1ubuntu1) ...
+Setting up libproxy1v5:amd64 (0.4.15-1) ...
+Setting up java-common (0.63ubuntu1~02) ...
+Setting up libgdk-pixbuf2.0-common (2.36.11-2) ...
+Setting up glib-networking-services (2.56.0-1) ...
+Setting up libgif7:amd64 (5.1.4-2) ...
+Setting up libglapi-mesa:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up libnspr4:amd64 (2:4.18-1ubuntu1) ...
+Setting up libxmuu1:amd64 (2:1.1.2-2) ...
+Setting up x11proto-dev (2018.4-4) ...
+Setting up libxtst6:amd64 (2:1.2.3-1) ...
+Setting up libasound2:amd64 (1.1.3-5ubuntu0.1) ...
+Setting up libdrm-common (2.4.91-2) ...
+Setting up libjson-glib-1.0-0:amd64 (1.4.2-3) ...
+Setting up libcroco3:amd64 (0.6.12-2) ...
+Setting up libxcb-sync1:amd64 (1.13-1) ...
+Setting up libatk1.0-data (2.28.1-1) ...
+Setting up libx11-xcb1:amd64 (2:1.6.4-3ubuntu0.1) ...
+Setting up xtrans-dev (1.3.5-1) ...
+Setting up libxcursor1:amd64 (1:1.1.15-1) ...
+Setting up libxdmcp-dev:amd64 (1:1.1.2-3) ...
+Setting up libxxf86dga1:amd64 (2:1.1.4-1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up libepoxy0:amd64 (1.4.3-1) ...
+Setting up libatk1.0-0:amd64 (2.28.1-1) ...
+Setting up libatk-bridge2.0-0:amd64 (2.26.2-1) ...
+Setting up libice6:amd64 (2:1.0.9-2) ...
+Setting up libfontenc1:amd64 (1:1.1.3-1) ...
+Setting up libdconf1:amd64 (0.26.0-2ubuntu3) ...
+Setting up libxcomposite1:amd64 (1:0.4.4-2) ...
+Setting up libxpm4:amd64 (1:3.5.12-1) ...
+Setting up libx11-doc (2:1.6.4-3ubuntu0.1) ...
+Setting up libxcb-shape0:amd64 (1.13-1) ...
+Setting up libpciaccess0:amd64 (0.14-1) ...
+Setting up libxv1:amd64 (2:1.0.11-1) ...
+Setting up libsensors4:amd64 (1:3.4.0-4) ...
+Setting up shared-mime-info (1.9-2) ...
+Setting up libxkbcommon0:amd64 (0.8.0-1) ...
+Setting up libcolord2:amd64 (1.3.3-2build1) ...
+Setting up libxxf86vm1:amd64 (1:1.1.4-1) ...
+Setting up fonts-dejavu-extra (2.37-1) ...
+Processing triggers for ca-certificates (20180409) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Setting up libwayland-cursor0:amd64 (1.14.0-2) ...
+Setting up libxrandr2:amd64 (2:1.5.1-1) ...
+Processing triggers for fontconfig (2.12.6-0ubuntu2) ...
+Setting up libwayland-server0:amd64 (1.14.0-2) ...
+Setting up libsm6:amd64 (2:1.2.2-1) ...
+Setting up x11proto-core-dev (2018.4-4) ...
+Setting up dconf-service (0.26.0-2ubuntu3) ...
+Setting up at-spi2-core (2.28.0-1) ...
+Setting up libgdk-pixbuf2.0-0:amd64 (2.36.11-2) ...
+Setting up libgdk-pixbuf2.0-bin (2.36.11-2) ...
+Setting up libnss3:amd64 (2:3.35-2ubuntu2) ...
+Setting up libxau-dev:amd64 (1:1.0.8-1) ...
+Setting up libdrm2:amd64 (2.4.91-2) ...
+Setting up libdrm-intel1:amd64 (2.4.91-2) ...
+Setting up gtk-update-icon-cache (3.22.30-1ubuntu1) ...
+Setting up libice-dev:amd64 (2:1.0.9-2) ...
+Setting up libxt6:amd64 (1:1.1.5-1) ...
+Setting up libxcb1-dev:amd64 (1.13-1) ...
+Setting up libdrm-radeon1:amd64 (2.4.91-2) ...
+Setting up libx11-dev:amd64 (2:1.6.4-3ubuntu0.1) ...
+Setting up libdrm-nouveau2:amd64 (2.4.91-2) ...
+Setting up dconf-gsettings-backend:amd64 (0.26.0-2ubuntu3) ...
+Setting up libsm-dev:amd64 (2:1.2.2-1) ...
+Setting up librsvg2-2:amd64 (2.40.20-2) ...
+Setting up gsettings-desktop-schemas (3.28.0-1ubuntu1) ...
+Setting up libdrm-amdgpu1:amd64 (2.4.91-2) ...
+Setting up libgtk-3-common (3.22.30-1ubuntu1) ...
+Setting up libgbm1:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up libgl1-mesa-dri:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up librsvg2-common:amd64 (2.40.20-2) ...
+Setting up libxmu6:amd64 (2:1.1.2-2) ...
+Setting up glib-networking:amd64 (2.56.0-1) ...
+Setting up libegl-mesa0:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up libglx-mesa0:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up libxaw7:amd64 (2:1.0.13-1) ...
+Setting up libxt-dev:amd64 (1:1.1.5-1) ...
+Setting up libsoup2.4-1:amd64 (2.62.1-1ubuntu0.1) ...
+Setting up libsoup-gnome2.4-1:amd64 (2.62.1-1ubuntu0.1) ...
+Setting up libegl1:amd64 (1.0.0-2ubuntu2.2) ...
+Setting up libwayland-egl1-mesa:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up librest-0.7-0:amd64 (0.8.0-2) ...
+Setting up libglx0:amd64 (1.0.0-2ubuntu2.2) ...
+Setting up libgl1:amd64 (1.0.0-2ubuntu2.2) ...
+Setting up x11-utils (7.7+3build1) ...
+Setting up libgl1-mesa-glx:amd64 (18.0.5-0ubuntu0~18.04.1) ...
+Setting up libatk-wrapper-java (0.33.3-20ubuntu0.1) ...
+Setting up libatk-wrapper-java-jni:amd64 (0.33.3-20ubuntu0.1) ...
+Setting up adwaita-icon-theme (3.28.0-1ubuntu1) ...
+update-alternatives: using /usr/share/icons/Adwaita/cursor.theme to provide /usr/share/icons/default/index.theme (x-cursor-theme) in auto mode
+Setting up openjdk-11-jre-headless:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/servertool to provide /usr/bin/servertool (servertool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up openjdk-11-jdk-headless:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jlink to provide /usr/bin/jlink (jlink) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/idlj to provide /usr/bin/idlj (idlj) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jdeps to provide /usr/bin/jdeps (jdeps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/wsimport to provide /usr/bin/wsimport (wsimport) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmic to provide /usr/bin/rmic (rmic) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jinfo to provide /usr/bin/jinfo (jinfo) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jstat to provide /usr/bin/jstat (jstat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/javac to provide /usr/bin/javac (javac) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jhsdb to provide /usr/bin/jhsdb (jhsdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jps to provide /usr/bin/jps (jps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jstack to provide /usr/bin/jstack (jstack) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jrunscript to provide /usr/bin/jrunscript (jrunscript) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc to provide /usr/bin/javadoc (javadoc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jmod to provide /usr/bin/jmod (jmod) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/javap to provide /usr/bin/javap (javap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jar to provide /usr/bin/jar (jar) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jaotc to provide /usr/bin/jaotc (jaotc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/schemagen to provide /usr/bin/schemagen (schemagen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jshell to provide /usr/bin/jshell (jshell) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/xjc to provide /usr/bin/xjc (xjc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jmap to provide /usr/bin/jmap (jmap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jdeprscan to provide /usr/bin/jdeprscan (jdeprscan) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jimage to provide /usr/bin/jimage (jimage) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jstatd to provide /usr/bin/jstatd (jstatd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jdb to provide /usr/bin/jdb (jdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/serialver to provide /usr/bin/serialver (serialver) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/wsgen to provide /usr/bin/wsgen (wsgen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jcmd to provide /usr/bin/jcmd (jcmd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jarsigner to provide /usr/bin/jarsigner (jarsigner) in auto mode
+Setting up humanity-icon-theme (0.6.15) ...
+Setting up libgtk-3-0:amd64 (3.22.30-1ubuntu1) ...
+Setting up libgtk-3-bin (3.22.30-1ubuntu1) ...
+Setting up openjdk-11-jre:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+Setting up ca-certificates-java (20180516ubuntu1~18.04.1) ...
+head: cannot open '/etc/ssl/certs/java/cacerts' for reading: No such file or directory
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+Adding debian:DST_Root_CA_X3.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:AddTrust_External_Root.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:GeoTrust_Universal_CA_2.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:GeoTrust_Global_CA.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:thawte_Primary_Root_CA.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:TrustCor_ECA-1.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:Certplus_Root_CA_G2.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:OpenTrust_Root_CA_G3.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:OpenTrust_Root_CA_G1.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Sağlayıcısı_H5.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:thawte_Primary_Root_CA_-_G2.pem
+Adding debian:Certplus_Root_CA_G1.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+Adding debian:Certplus_Class_2_Primary_CA.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:TrustCor_RootCert_CA-1.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:TrustCor_RootCert_CA-2.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:thawte_Primary_Root_CA_-_G3.pem
+Adding debian:GeoTrust_Primary_Certification_Authority.pem
+Adding debian:GeoTrust_Universal_CA.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:Certigna.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:EE_Certification_Centre_Root_CA.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:OpenTrust_Root_CA_G2.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:EC-ACC.pem
+Adding debian:LuxTrust_Global_Root_2.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:Izenpe.com.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Adding debian:Certinomis_-_Root_CA.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:Visa_eCommerce_Root.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:Deutsche_Telekom_Root_CA_2.pem
+Adding debian:Taiwan_GRCA.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+done.
+Setting up ubuntu-mono (16.10+18.04.20181005-0ubuntu1) ...
+Setting up openjdk-11-jdk:amd64 (10.0.2+13-1ubuntu0.18.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/appletviewer to provide /usr/bin/appletviewer (appletviewer) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jconsole to provide /usr/bin/jconsole (jconsole) in auto mode
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Processing triggers for libgdk-pixbuf2.0-0:amd64 (2.36.11-2) ...
+Processing triggers for ca-certificates (20180409) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
+Clearing symlinks in /etc/ssl/certs...
+done.
+Updating certificates in /etc/ssl/certs...
+133 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+Replacing debian:ACCVRAIZ1.pem
+Replacing debian:AC_RAIZ_FNMT-RCM.pem
+Replacing debian:Actalis_Authentication_Root_CA.pem
+Replacing debian:AddTrust_External_Root.pem
+Replacing debian:AffirmTrust_Commercial.pem
+Replacing debian:AffirmTrust_Networking.pem
+Replacing debian:AffirmTrust_Premium.pem
+Replacing debian:AffirmTrust_Premium_ECC.pem
+Replacing debian:Amazon_Root_CA_1.pem
+Replacing debian:Amazon_Root_CA_2.pem
+Replacing debian:Amazon_Root_CA_3.pem
+Replacing debian:Amazon_Root_CA_4.pem
+Replacing debian:Atos_TrustedRoot_2011.pem
+Replacing debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Replacing debian:Baltimore_CyberTrust_Root.pem
+Replacing debian:Buypass_Class_2_Root_CA.pem
+Replacing debian:Buypass_Class_3_Root_CA.pem
+Replacing debian:CA_Disig_Root_R2.pem
+Replacing debian:CFCA_EV_ROOT.pem
+Replacing debian:COMODO_Certification_Authority.pem
+Replacing debian:COMODO_ECC_Certification_Authority.pem
+Replacing debian:COMODO_RSA_Certification_Authority.pem
+Replacing debian:Certigna.pem
+Replacing debian:Certinomis_-_Root_CA.pem
+Replacing debian:Certplus_Class_2_Primary_CA.pem
+Replacing debian:Certplus_Root_CA_G1.pem
+Replacing debian:Certplus_Root_CA_G2.pem
+Replacing debian:Certum_Trusted_Network_CA.pem
+Replacing debian:Certum_Trusted_Network_CA_2.pem
+Replacing debian:Chambers_of_Commerce_Root_-_2008.pem
+Replacing debian:Comodo_AAA_Services_root.pem
+Replacing debian:Cybertrust_Global_Root.pem
+Replacing debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Replacing debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Replacing debian:DST_Root_CA_X3.pem
+Replacing debian:Deutsche_Telekom_Root_CA_2.pem
+Replacing debian:DigiCert_Assured_ID_Root_CA.pem
+Replacing debian:DigiCert_Assured_ID_Root_G2.pem
+Replacing debian:DigiCert_Assured_ID_Root_G3.pem
+Replacing debian:DigiCert_Global_Root_CA.pem
+Replacing debian:DigiCert_Global_Root_G2.pem
+Replacing debian:DigiCert_Global_Root_G3.pem
+Replacing debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Replacing debian:DigiCert_Trusted_Root_G4.pem
+Replacing debian:E-Tugra_Certification_Authority.pem
+Replacing debian:EC-ACC.pem
+Replacing debian:EE_Certification_Centre_Root_CA.pem
+Replacing debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Replacing debian:Entrust_Root_Certification_Authority.pem
+Replacing debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Replacing debian:Entrust_Root_Certification_Authority_-_G2.pem
+Replacing debian:GDCA_TrustAUTH_R5_ROOT.pem
+Replacing debian:GeoTrust_Global_CA.pem
+Replacing debian:GeoTrust_Primary_Certification_Authority.pem
+Replacing debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Replacing debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+Replacing debian:GeoTrust_Universal_CA.pem
+Replacing debian:GeoTrust_Universal_CA_2.pem
+Replacing debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Replacing debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Replacing debian:GlobalSign_Root_CA.pem
+Replacing debian:GlobalSign_Root_CA_-_R2.pem
+Replacing debian:GlobalSign_Root_CA_-_R3.pem
+Replacing debian:Global_Chambersign_Root_-_2008.pem
+Replacing debian:Go_Daddy_Class_2_CA.pem
+Replacing debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Replacing debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Replacing debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Replacing debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Replacing debian:Hongkong_Post_Root_CA_1.pem
+Replacing debian:ISRG_Root_X1.pem
+Replacing debian:IdenTrust_Commercial_Root_CA_1.pem
+Replacing debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Replacing debian:Izenpe.com.pem
+Replacing debian:LuxTrust_Global_Root_2.pem
+Replacing debian:Microsec_e-Szigno_Root_CA_2009.pem
+Replacing debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Replacing debian:Network_Solutions_Certificate_Authority.pem
+Replacing debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Replacing debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Replacing debian:OpenTrust_Root_CA_G1.pem
+Replacing debian:OpenTrust_Root_CA_G2.pem
+Replacing debian:OpenTrust_Root_CA_G3.pem
+Replacing debian:QuoVadis_Root_CA.pem
+Replacing debian:QuoVadis_Root_CA_1_G3.pem
+Replacing debian:QuoVadis_Root_CA_2.pem
+Replacing debian:QuoVadis_Root_CA_2_G3.pem
+Replacing debian:QuoVadis_Root_CA_3.pem
+Replacing debian:QuoVadis_Root_CA_3_G3.pem
+Replacing debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Replacing debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Replacing debian:SSL.com_Root_Certification_Authority_ECC.pem
+Replacing debian:SSL.com_Root_Certification_Authority_RSA.pem
+Replacing debian:SZAFIR_ROOT_CA2.pem
+Replacing debian:SecureSign_RootCA11.pem
+Replacing debian:SecureTrust_CA.pem
+Replacing debian:Secure_Global_CA.pem
+Replacing debian:Security_Communication_RootCA2.pem
+Replacing debian:Security_Communication_Root_CA.pem
+Replacing debian:Sonera_Class_2_Root_CA.pem
+Replacing debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Replacing debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Replacing debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Replacing debian:Starfield_Class_2_CA.pem
+Replacing debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Replacing debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Replacing debian:SwissSign_Gold_CA_-_G2.pem
+Replacing debian:SwissSign_Silver_CA_-_G2.pem
+Replacing debian:T-TeleSec_GlobalRoot_Class_2.pem
+Replacing debian:T-TeleSec_GlobalRoot_Class_3.pem
+Replacing debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Replacing debian:TWCA_Global_Root_CA.pem
+Replacing debian:TWCA_Root_Certification_Authority.pem
+Replacing debian:Taiwan_GRCA.pem
+Replacing debian:TeliaSonera_Root_CA_v1.pem
+Replacing debian:TrustCor_ECA-1.pem
+Replacing debian:TrustCor_RootCert_CA-1.pem
+Replacing debian:TrustCor_RootCert_CA-2.pem
+Replacing debian:Trustis_FPS_Root_CA.pem
+Replacing debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Sağlayıcısı_H5.pem
+Replacing debian:USERTrust_ECC_Certification_Authority.pem
+Replacing debian:USERTrust_RSA_Certification_Authority.pem
+Replacing debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Replacing debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Replacing debian:VeriSign_Universal_Root_Certification_Authority.pem
+Replacing debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Replacing debian:Visa_eCommerce_Root.pem
+Replacing debian:XRamp_Global_CA_Root.pem
+Replacing debian:certSIGN_ROOT_CA.pem
+Replacing debian:ePKI_Root_Certification_Authority.pem
+Replacing debian:thawte_Primary_Root_CA.pem
+Replacing debian:thawte_Primary_Root_CA_-_G2.pem
+Replacing debian:thawte_Primary_Root_CA_-_G3.pem
+done.
+done.
+19:51:04 INFO: Taurus CLI Tool v1.13.0
+19:51:04 INFO: Starting with configs: ['/tmp/http_4SIMYK.yml']
+19:51:04 INFO: Configuring...
+19:51:04 INFO: Artifacts dir: /var/tmp/jmeter/2018-10-25_19-51-04.876161
+19:51:05 INFO: Preparing...
+19:51:05 INFO: Will install JMeter into /root/.bzt/jmeter-taurus/4.0
+19:51:06 INFO: Downloading: https://www-eu.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip
+19:51:07 ERROR: Error while downloading https://www-eu.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip: Unsuccessful download from https://www-eu.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip
+19:51:07 INFO: Downloading: https://www-us.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip
+19:51:07 ERROR: Error while downloading https://www-us.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip: Unsuccessful download from https://www-us.apache.org/dist//jmeter/binaries/apache-jmeter-4.0.zip
+19:51:07 INFO: Downloading: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.zip
+19:51:12 INFO: Unzipping /tmp/tmpBY0jSm.zip to /root/.bzt/jmeter-taurus/4.0
+19:52:04 INFO: Downloading jmeter-plugins-manager-1.3.jar from https://search.maven.org/remotecontent?filepath=kg/apc/jmeter-plugins-manager/1.3/jmeter-plugins-manager-1.3.jar
+19:52:05 INFO: Downloading cmdrunner-2.2.jar from https://search.maven.org/remotecontent?filepath=kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
+19:52:07 INFO: Installing JMeter plugins: jpgc-casutg,jpgc-dummy,jpgc-ffw,jpgc-fifo,jpgc-functions,jpgc-json,jpgc-perfmon,jpgc-prmctl,jpgc-tst
+19:52:24 INFO: Starting...
+19:52:24 INFO: Waiting for results...
+19:52:38 WARNING: Please wait for graceful shutdown...
+19:52:38 INFO: Shutting down...
+19:52:38 INFO: Post-processing...
+19:52:38 INFO: Test duration: 0:00:14
+19:52:38 INFO: Samples count: 1, 0.00% failures
+19:52:38 INFO: Average times: total 0.559, latency 0.558, connect 0.419
+19:52:38 INFO: Percentiles:
++---------------+---------------+
+| Percentile, % | Resp. Time, s |
++---------------+---------------+
+|           0.0 |         0.559 |
+|          50.0 |         0.559 |
+|          90.0 |         0.559 |
+|          95.0 |         0.559 |
+|          99.0 |         0.559 |
+|          99.9 |         0.559 |
+|         100.0 |         0.559 |
++---------------+---------------+
+19:52:38 INFO: Request label stats:
++-----------------------+--------+---------+--------+-------+
+| label                 | status |    succ | avg_rt | error |
++-----------------------+--------+---------+--------+-------+
+| http://blazedemo.com/ |   OK   | 100.00% |  0.559 |       |
++-----------------------+--------+---------+--------+-------+
+19:52:38 INFO: Artifacts dir: /var/tmp/jmeter/2018-10-25_19-51-04.876161
+19:52:38 INFO: Done performing with code: 0
+total 912
+drwxrwxrwt 1 root root   4096 Oct 25 19:52 .
+drwxr-xr-x 1 root root   4096 Oct 25 19:52 ..
+drwxr-xr-x 2 root root   4096 Oct 25 19:52 hsperfdata_root
+-rw-r--r-- 1 root root 892929 Oct 25 19:52 jmeter-plugins-manager-1.3.jar16806256434645983849.jar
+-rw-r--r-- 1 root root   1515 Oct 25 19:52 jpgc-cleaner-5694264332469137972.log
+-rw-r--r-- 1 root root      0 Oct 25 19:52 jpgc-installers-10030826783838003124.log
+drwxr-xr-x 2 root root   4096 Oct 25 19:52 pmgr_cache
+-rw------- 1 root root  14528 Oct 25 19:51 tmpnBAfvp
+Moving /tmp/jmeter_plugins_cmn_jmeter2715371667936779381.jar to /root/.bzt/jmeter-taurus/4.0/lib/jmeter-plugins-cmn-jmeter-0.4.jar
+Moving /tmp/json_lib625300974347269644.jar to /root/.bzt/jmeter-taurus/4.0/lib/json-lib-2.4-jdk15.jar
+Moving /tmp/perfmon11911586401771797188.jar to /root/.bzt/jmeter-taurus/4.0/lib/perfmon-2.2.2.jar
+Moving /tmp/snakeyaml14864970035366675712.jar to /root/.bzt/jmeter-taurus/4.0/lib/snakeyaml-1.21.jar
+Moving /tmp/jpgc_casutg7633741411872373678.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-casutg-2.6.jar
+Moving /tmp/jpgc_json7094117178672133514.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-json-2.7.jar
+Moving /tmp/jpgc_perfmon14984907263508245049.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-perfmon-2.1.jar
+Moving /tmp/jpgc_fifo8010638108339824895.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-fifo-0.2.jar
+Moving /tmp/jpgc_dummy17461220318214672681.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-dummy-0.2.jar
+Moving /tmp/jpgc_functions6565989664282324016.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-functions-2.1.jar
+Moving /tmp/jpgc_tst4125912977515577158.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-tst-2.5.jar
+Moving /tmp/jpgc_prmctl933109765654983262.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-prmctl-0.4.jar
+Moving /tmp/jpgc_ffw13968702165409899401.jar to /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-ffw-2.0.jar
+Done moving files
+Done running installers
+total 4284
+drwxr-xr-x 2 root root    4096 Oct 25 19:52 .
+drwxr-xr-x 4 root root    4096 Oct 25 19:52 ..
+-rw-r--r-- 1 root root  659164 Oct 25 19:51 ApacheJMeter_components.jar
+-rw-r--r-- 1 root root 1567379 Oct 25 19:51 ApacheJMeter_core.jar
+-rw-r--r-- 1 root root   15100 Oct 25 19:51 ApacheJMeter_ftp.jar
+-rw-r--r-- 1 root root  113112 Oct 25 19:51 ApacheJMeter_functions.jar
+-rw-r--r-- 1 root root  452873 Oct 25 19:51 ApacheJMeter_http.jar
+-rw-r--r-- 1 root root   43541 Oct 25 19:51 ApacheJMeter_java.jar
+-rw-r--r-- 1 root root   54589 Oct 25 19:51 ApacheJMeter_jdbc.jar
+-rw-r--r-- 1 root root   96545 Oct 25 19:51 ApacheJMeter_jms.jar
+-rw-r--r-- 1 root root   22161 Oct 25 19:51 ApacheJMeter_junit.jar
+-rw-r--r-- 1 root root   48278 Oct 25 19:51 ApacheJMeter_ldap.jar
+-rw-r--r-- 1 root root   58496 Oct 25 19:51 ApacheJMeter_mail.jar
+-rw-r--r-- 1 root root   26117 Oct 25 19:51 ApacheJMeter_mongodb.jar
+-rw-r--r-- 1 root root   13935 Oct 25 19:51 ApacheJMeter_native.jar
+-rw-r--r-- 1 root root   30214 Oct 25 19:51 ApacheJMeter_tcp.jar
+-rw-r--r-- 1 root root   68288 Oct 25 19:52 jmeter-plugins-casutg-2.6.jar
+-rw-r--r-- 1 root root    7890 Oct 25 19:52 jmeter-plugins-dummy-0.2.jar
+-rw-r--r-- 1 root root   14966 Oct 25 19:52 jmeter-plugins-ffw-2.0.jar
+-rw-r--r-- 1 root root   17704 Oct 25 19:52 jmeter-plugins-fifo-0.2.jar
+-rw-r--r-- 1 root root   29372 Oct 25 19:52 jmeter-plugins-functions-2.1.jar
+-rw-r--r-- 1 root root   24052 Oct 25 19:52 jmeter-plugins-json-2.7.jar
+-rw-r--r-- 1 root root  892929 Oct 25 19:52 jmeter-plugins-manager-1.3.jar
+-rw-r--r-- 1 root root   41454 Oct 25 19:52 jmeter-plugins-perfmon-2.1.jar
+-rw-r--r-- 1 root root    9297 Oct 25 19:52 jmeter-plugins-prmctl-0.4.jar
+-rw-r--r-- 1 root root   16482 Oct 25 19:52 jmeter-plugins-tst-2.5.jar
+-rw-r--r-- 1 root root     106 Oct 25 19:51 readme.txt
+-rw-r--r-- 1 root root 16482 Oct 25 19:52 /root/.bzt/jmeter-taurus/4.0/lib/ext/jmeter-plugins-tst-2.5.jar
+Removing intermediate container 016a0c045230
+ ---> af7a75404c02
+Step 8/8 : RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ ---> Running in b673fde255a8
+Removing intermediate container b673fde255a8
+ ---> d095280e32e4
+Successfully built d095280e32e4
+Successfully tagged bzt-erx:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
