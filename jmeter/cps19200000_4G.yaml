@@ -1,0 +1,5 @@
+modules:
+  jmeter:
+    properties:
+      httpclient.socket.http.cps:   19200000    #   Mobile data LTE 4G: 150 Mbp/s       
+      httpclient.socket.https.cps:  19200000
