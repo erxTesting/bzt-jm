@@ -42,7 +42,7 @@ ENV JAVA_VERSION=11 \
 RUN apt-get update \
     && apt-get -y install openjdk-11-jdk \
     && apt-get clean \
-    && bzt -o jmeter_default.yaml \
+    && bzt jmeter_default.yaml \
 	   -o execution.0.concurrency=1 \
 	   -o execution.0.iterations=1 \
 	   http://blazedemo.com/ \
