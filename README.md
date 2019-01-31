@@ -27,10 +27,10 @@ See https://github.com/erxTesting/bzt-jm
 
 **Build:**
 ```shell
-$ docker build -t bzt-erx:latest .
+$ docker build -t bzt-jm:latest .
 ```
 
 **Run:**
 ```shell
-$ docker run -t -i --rm bzt-erx:<VERSION> /sbin/my_init -- bash -l
+$ docker run -t -i --rm bzt-jm:<VERSION> /sbin/my_init -- bash -l
 ```
