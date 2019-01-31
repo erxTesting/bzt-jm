@@ -1,0 +1,4 @@
+modules:
+  jmeter:
+    plugins:
+    - jmeter.backendlistener.elasticsearch
