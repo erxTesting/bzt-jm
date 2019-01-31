@@ -22,10 +22,9 @@ CMD ["/sbin/my_init"]
 RUN apt-get update \
     && apt-get install -y wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
 	    libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
-	&& pip install --upgrade pip \
+    && pip install --upgrade pip \
     && update-ca-certificates -f \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Taurus and it's Tools #~ may be useful> && bzt -install-tools -v 
 RUN pip install --upgrade bzt \
@@ -33,12 +32,13 @@ RUN pip install --upgrade bzt \
     && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 # ADD bzt /root/.bzt
 
+# Install Java and JMeter Libs and validate #~ may be useful> && apt-get -y install openjdk-$JAVA_VERSION-jdk 
 ENV JAVA_VERSION=11 \
     JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64" \
     JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64" \
     JRE_HOME="/usr/lib/jvm/java-11-openjdk-amd64/jre" 
-
-# Install Java and JMeter Libs and validate #~ may be useful> && apt-get -y install openjdk-$JAVA_VERSION-jdk 
+WORKDIR ~/.bzt/jmeter-taurus
+COPY . .
 RUN apt-get update \
     && apt-get -y install openjdk-11-jdk \
     && apt-get clean \
