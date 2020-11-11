@@ -2,7 +2,7 @@
 reporting:
 - module: passfail
   criteria:
-  - avg-rt>100ms for 30s, continue as failed
+  - avg-rt>50ms for 30s, continue as failed
   - fail>50% for 10s, stop as failed
   - class: bzt.modules.monitoring.MonitoringCriteria
     subject: local/cpu
