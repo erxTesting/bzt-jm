@@ -1,7 +1,8 @@
 # BlazeMeter Taurus and JMeter container
 # See https://hub.docker.com/r/erxx/bzt-jm
-# Taurus / JMeter only layered container	bzt-erx:v0.4.1 
+# Taurus / JMeter only layered container	bzt-erx:v0.4.2
 # https://github.com/erxTesting/erx-bzt-container
+# Reference https://github.com/Blazemeter/taurus
 # https://cloud.docker.com/u/erxx/repository/docker/erxx/bzt-jm
 
 # Use phusion/baseimage as base image. To make your builds reproducible, make
@@ -10,7 +11,8 @@
 # a list of version numbers.
 # Build:	docker build -t bzt-erx:latest .
 # Run:		docker run -t -i --rm bzt-erx:<VERSION> /sbin/my_init -- bash -l
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:noble-1.0.0
+# was FROM phusion/baseimage:0.11 
 # was FROM debian:latest
 
 LABEL maintainer="Eric Berg ERX <perfology@gmail.com>"
@@ -20,8 +22,10 @@ CMD ["/sbin/my_init"]
 
 # Install Python, Libs and Upgrade PIP
 RUN apt-get update \
-    && apt-get install -y wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
-	    libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
+    && apt-get install -y \
+        python3 python3-tk python3-pip python3-dev libxml2-dev libxslt-dev zlib1g-dev net-tools \
+#        wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
+#	    libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
     && pip install --upgrade pip \
     && update-ca-certificates -f \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -32,17 +36,18 @@ RUN pip install --upgrade bzt \
     && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 # ADD bzt /root/.bzt
 
-# Install Java and JMeter Libs and validate #~ may be useful> && apt-get -y install openjdk-$JAVA_VERSION-jdk 
+# Install Java and JMeter Libs and validate 
+#~ may be useful> && apt-get -y install openjdk-$JAVA_VERSION-jdk , latest is 21
 ENV JAVA_VERSION=11 \
-    JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64" \
-    JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64" \
-    JRE_HOME="/usr/lib/jvm/java-11-openjdk-amd64/jre" 
+    JAVA_HOME="/usr/lib/jvm/java-$JAVA_VERSION-openjdk-amd64" \
+    JDK_HOME="/usr/lib/jvm/java-$JAVA_VERSION-openjdk-amd64" \
+    JRE_HOME="/usr/lib/jvm/java-$JAVA_VERSION-openjdk-amd64/jre" 
 WORKDIR ~/.bzt/jmeter-taurus
 COPY . .
 RUN apt-get update \
-    && apt-get -y install openjdk-11-jdk \
+    && apt-get -y install openjdk-$JAVA_VERSION-jdk \
     && apt-get clean \
-    && bzt jmeter_default.yaml \
+    && bzt jmeter-default.yaml \
 	   -o execution.0.concurrency=1 \
 	   -o execution.0.iterations=1 \
 	   http://blazedemo.com/ \
