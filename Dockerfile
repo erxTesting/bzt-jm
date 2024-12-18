@@ -25,7 +25,7 @@ RUN apt-get update \
     # && 
     # python3 -m install --upgrade pip --break-system-packages\
     && apt-get -y install --no-install-recommends \
-    python3-pip \
+    python3-pip 
     # python3-full python3-tk python3-pip python3-dev \
     # libxml2-dev libxslt-dev zlib1g-dev net-tools \
 
