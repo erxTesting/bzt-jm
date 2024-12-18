@@ -23,8 +23,9 @@ CMD ["/sbin/my_init"]
 # Install Python, Libs and Upgrade PIP
 RUN apt-get update \
     && apt-get install -y \
-        python3-full python3-tk python3-pip python3-dev \
-        libxml2-dev libxslt-dev zlib1g-dev net-tools \
+        python3=full \
+        # python3-tk python3-pip python3-dev \
+        # libxml2-dev libxslt-dev zlib1g-dev net-tools \
         # wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
         # libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
     && pip install --upgrade pip \
