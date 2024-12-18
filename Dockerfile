@@ -21,16 +21,15 @@ LABEL maintainer="Eric Berg ERX <perfology@gmail.com>"
 CMD ["/sbin/my_init"]
 
 # Install Python, Libs and Upgrade PIP
-RUN apt-get update \
-    # && 
-    # python3 -m install --upgrade pip --break-system-packages\
+RUN \
+    apt-get update \
     && apt-get -y install --no-install-recommends \
-    python3-pip 
-    # python3-full python3-tk python3-pip python3-dev \
+        python3-full python3-tk python3-pip python3-dev \
     # libxml2-dev libxslt-dev zlib1g-dev net-tools \
 
     # wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
     # libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
+    && pip install --upgrade pip --break-system-packages 
     # && update-ca-certificates -f \
     # && apt-get clean && rm -rf /var/lib/apt/lists/*
 
