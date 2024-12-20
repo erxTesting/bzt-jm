@@ -28,7 +28,7 @@ WORKDIR /tmp
 RUN apt-get -y update \
     # && apt install python3-setuptools \
     && apt-get -y install --no-install-recommends \
-        python3-pip python-dev python3-setuptools \ 
+        python3-pip python3-dev python3-setuptools \ 
         build-essential net-tools apt-utils \
         libxml2-dev libxslt-dev zlib1g-dev wget \
         zip unzip bzip2 file imagemagick libxml2-dev libxslt-dev \
