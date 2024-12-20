@@ -27,7 +27,8 @@ RUN apt-get -y update \
         libxml2-dev libxslt-dev zlib1g-dev net-tools wget \
         zip unzip bzip2 file imagemagick libxml2-dev libxslt-dev \
         make xz-utils zlib1g-dev  curl git xmlstarlet apt-utils \
-    && pip install --upgrade setuptools --break-system-packages \
+    && apt-get install --reinstall python3.12-distutils \
+    # && pip install --upgrade setuptools --break-system-packages \
     && update-ca-certificates -f \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
