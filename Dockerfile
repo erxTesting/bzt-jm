@@ -17,8 +17,12 @@ FROM phusion/baseimage:noble-1.0.0
 
 LABEL maintainer="Eric Berg ERX <perfology@gmail.com>"
 
+ADD https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb /tmp
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
+
+WORKDIR /tmp
 
 # Install Python, Libs and Upgrade PIP
 RUN apt-get -y update \
