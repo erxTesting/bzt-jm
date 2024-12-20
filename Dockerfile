@@ -28,7 +28,7 @@ RUN apt-get -y update \
 
     # wget python python-dev python-pip zip bzip2 file imagemagick libxml2-dev \
     # libxslt-dev make xz-utils zlib1g-dev unzip curl python-tk git xmlstarlet apt-utils \
-    # && pip install --upgrade pip --break-system-packages 
+    && pip install --upgrade setuptools --break-system-packages 
     && update-ca-certificates -f \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
