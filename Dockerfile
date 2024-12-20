@@ -26,7 +26,7 @@ WORKDIR /tmp
 
 # Install Python, Libs and Upgrade PIP
 RUN apt-get -y update \
-    && apt install python3-distutils \
+    && apt install python3-setuptools \
     && apt-get -y install --no-install-recommends \
         python3-pip python-dev \ 
         build-essential net-tools apt-utils \
