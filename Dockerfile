@@ -23,9 +23,9 @@ CMD ["/sbin/my_init"]
 # Install Python, Libs and Upgrade PIP
 RUN apt-get -y update \
     && apt-get -y install --no-install-recommends \
-        python3-full python3-tk python3-pip python3-dev python3-setuptools \ 
+        python3-pip python3.10-dev \ 
         build-essential net-tools apt-utils \
-        libxml2-dev libxslt-dev zlib1g-dev net-tools wget \
+        libxml2-dev libxslt-dev zlib1g-dev wget \
         zip unzip bzip2 file imagemagick libxml2-dev libxslt-dev \
         make xz-utils zlib1g-dev curl git xmlstarlet \
     # && apt-get install --reinstall python3.12-distutils \
