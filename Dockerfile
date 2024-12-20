@@ -26,8 +26,9 @@ WORKDIR /tmp
 
 # Install Python, Libs and Upgrade PIP
 RUN apt-get -y update \
+    && apt install python3-distutils \
     && apt-get -y install --no-install-recommends \
-        python3-pip python3.10-dev \ 
+        python3-pip python-dev \ 
         build-essential net-tools apt-utils \
         libxml2-dev libxslt-dev zlib1g-dev wget \
         zip unzip bzip2 file imagemagick libxml2-dev libxslt-dev \
