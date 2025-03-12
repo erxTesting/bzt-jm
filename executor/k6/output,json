@@ -1,0 +1,3 @@
+modules:
+  k6:
+    cmdline: --out json=result.json
