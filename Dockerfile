@@ -1,6 +1,6 @@
 # BlazeMeter Taurus and JMeter container
 # See https://hub.docker.com/r/erxx/bzt-jm
-# Taurus / JMeter only layered container	bzt-erx:v0.4.2
+# Taurus / JMeter / k6 focused layered container	bzt-erx:v0.5.0
 # https://github.com/erxTesting/erx-bzt-container
 # Reference https://github.com/Blazemeter/taurus
 # https://cloud.docker.com/u/erxx/repository/docker/erxx/bzt-jm
